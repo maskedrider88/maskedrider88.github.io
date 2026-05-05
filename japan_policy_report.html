@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本の統治構造：現状と問題点</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-mid: #3d3d3d;
+    --ink-light: #6b6b6b;
+    --rule: #c8b99a;
+    --rule-light: #e8ddd0;
+    --bg: #f5f0e8;
+    --bg-card: #fdfaf5;
+    --accent: #8b1a1a;
+    --accent-soft: #c44a2a;
+    --gold: #b8860b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.9;
+    font-size: 15px;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(200,185,154,0.08) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(200,185,154,0.08) 40px);
+  }
+
+  .cover-label {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--rule);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .cover-label::before,
+  .cover-label::after {
+    content: '―――';
+    margin: 0 12px;
+    opacity: 0.5;
+  }
+
+  .cover-title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    color: #f5f0e8;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .cover-subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--rule);
+    letter-spacing: 0.1em;
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .cover-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 auto 60px;
+    position: relative;
+  }
+
+  .cover-meta {
+    font-size: 12px;
+    color: var(--ink-light);
+    letter-spacing: 0.15em;
+    position: relative;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  /* ── CHAPTER HEADER ── */
+  .chapter {
+    margin-bottom: 72px;
+  }
+
+  .chapter-num {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .chapter-title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.4;
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    margin-bottom: 32px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule-light);
+  }
+
+  .section-title::before {
+    content: '◆ ';
+    color: var(--accent);
+    font-size: 10px;
+    vertical-align: middle;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--ink-mid);
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight {
+    background: var(--bg-card);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .highlight p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 28px 32px;
+    margin: 32px 0;
+    position: relative;
+  }
+
+  .callout::before {
+    content: '"';
+    font-family: 'IM Fell English', serif;
+    font-size: 80px;
+    color: var(--accent);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  .callout p {
+    color: #d8d0c4;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    line-height: 1.8;
+    padding-left: 12px;
+  }
+
+  /* ── THREE CAUSES ── */
+  .causes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .cause-card {
+    background: var(--bg-card);
+    border-top: 2px solid var(--accent);
+    padding: 20px 18px;
+  }
+
+  .cause-num {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .cause-label {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .cause-desc {
+    font-size: 12.5px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── BUDGET VIZ ── */
+  .budget-viz {
+    margin: 24px 0;
+    background: var(--bg-card);
+    padding: 24px;
+    border: 1px solid var(--rule-light);
+  }
+
+  .budget-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .budget-label {
+    font-size: 12px;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    min-width: 100px;
+    color: var(--ink);
+  }
+
+  .budget-bar-wrap {
+    flex: 1;
+    background: var(--rule-light);
+    height: 28px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .budget-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+
+  .budget-bar.general {
+    background: var(--accent);
+    width: 23%;
+  }
+
+  .budget-bar.special {
+    background: var(--ink);
+    width: 77%;
+  }
+
+  .budget-bar-label {
+    font-size: 11px;
+    color: white;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  }
+
+  .budget-amount {
+    font-size: 12px;
+    color: var(--ink-light);
+    min-width: 70px;
+    text-align: right;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    margin: 64px 0;
+    color: var(--rule);
+    font-size: 18px;
+    letter-spacing: 0.5em;
+  }
+
+  /* ── APPENDIX ── */
+  .appendix-header {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 48px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .appendix-header h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+  }
+
+  .appendix-header p {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--rule);
+  }
+
+  .appendix-section {
+    background: var(--bg-card);
+    border: 1px solid var(--rule-light);
+    margin-bottom: 40px;
+  }
+
+  .appendix-section-header {
+    background: var(--rule-light);
+    padding: 14px 24px;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+  }
+
+  .appendix-table-wrap {
+    overflow-x: auto;
+    padding: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    background: #2c2c2c;
+    color: var(--bg);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule-light);
+    vertical-align: top;
+    line-height: 1.7;
+    color: var(--ink-mid);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background: rgba(200,185,154,0.07);
+  }
+
+  td:first-child {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  /* Architecture table */
+  .arch-table td {
+    font-size: 12.5px;
+  }
+
+  .arch-table th:nth-child(2),
+  .arch-table th:nth-child(3),
+  .arch-table td:nth-child(2),
+  .arch-table td:nth-child(3) {
+    width: 44%;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule-light);
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 48px 24px; }
+    .causes { grid-template-columns: 1fr; }
+    .cover { padding: 60px 24px; }
+    .appendix-header { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">政策分析レポート</div>
+  <h1 class="cover-title">日本の統治構造<br>現状と問題点</h1>
+  <p class="cover-subtitle">誰がこの国を動かしているのか</p>
+  <div class="cover-rule"></div>
+  <p class="cover-meta">2026年5月</p>
+</div>
+
+<!-- MAIN BODY -->
+<div class="container">
+
+  <!-- Chapter 1 -->
+  <div class="chapter">
+    <span class="chapter-num">Chapter I</span>
+    <h2 class="chapter-title">「誰がこの国を牛耳っているか」という問い</h2>
+
+    <div class="section">
+      <p>日本の政策決定を論じるとき、「官僚支配」という言葉がしばしば使われる。しかし実態はより複雑だ。特定の誰かが意図を持って国を支配しているというよりも、<strong>制度の慣性そのものが国を動かしている</strong>という状態に近い。</p>
+
+      <p>その中で例外的に強い実権を持つのが財務省である。予算編成権は、すべての政策に「値段をつける権限」を意味する。内閣がいかなる戦略を掲げようとも、財務省が「財源なし」と査定すれば動かない。これは事実上の拒否権だ。</p>
+    </div>
+
+    <div class="callout">
+      <p>官僚全体は「支配者」というより縦割り構造の囚人である。各省庁は省益の保全に全力を注ぎ、国全体の最適解よりも自省の論理を優先する。</p>
+    </div>
+
+    <div class="section">
+      <p>内閣主導の戦略分野（17分野）は、政治家が官僚から主導権を取り戻そうとした痕跡でもある。2001年の橋本行革以降、内閣官房・内閣府の機能強化はその試みの連続だった。しかし予算の実権は依然として財務省に留まり、政治家は「何をやるか」は決められても「いくら使うか」は交渉になる構造から抜け出せていない。</p>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- Chapter 2 -->
+  <div class="chapter">
+    <span class="chapter-num">Chapter II</span>
+    <h2 class="chapter-title">審議されない統治：省庁運用の実態</h2>
+
+    <div class="section">
+      <p>より深刻な問題は、省庁の日常的な政策運用が国会の審議をほぼ経ないまま進んでいることだ。国会で議決されるのは法律と予算の大枠のみである。実際の政策運用は<strong>政省令・通達・要綱</strong>という形で動いており、これらは立法府を通らない。</p>
+
+      <p>補助金の採択基準、許認可の実務要件、業界団体への行政指導——これらはすべて省庁が事実上単独で決定している。しかも「前例踏襲」が最大の正当性となるため、誰も問い直さない構造が維持され続ける。</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">なぜ「審議」が機能しないのか：三つの構造的原因</h3>
+
+      <div class="causes">
+        <div class="cause-card">
+          <div class="cause-num">01</div>
+          <div class="cause-label">情報の非対称性</div>
+          <p class="cause-desc">省庁は30年以上その分野に従事する専門家集団。国会議員は数年で異動する。技術的に反論できない。</p>
+        </div>
+        <div class="cause-card">
+          <div class="cause-num">02</div>
+          <div class="cause-label">族議員の取り込み</div>
+          <p class="cause-desc">審議するはずの議員が、特定省庁・業界と利益共同体を形成してしまっている。監視者と被監視者が同化する。</p>
+        </div>
+        <div class="cause-card">
+          <div class="cause-num">03</div>
+          <div class="cause-label">複雑性の防壁</div>
+          <p class="cause-desc">制度が複雑すぎて、外部から全体像が見えない。見えないものは問われない。透明性の欠如が無関心を生む。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- Chapter 3 -->
+  <div class="chapter">
+    <span class="chapter-num">Chapter III</span>
+    <h2 class="chapter-title">特別会計という政治的統制の不在</h2>
+
+    <div class="section">
+      <p>民主的統制の空洞化を最も象徴するのが特別会計の問題だ。一般会計（約120兆円）は国会で議決されるが、特別会計（約400兆円）は「目的が決まっている」という建前のもと、細部はほぼ省庁の裁量で運用される。</p>
+    </div>
+
+    <div class="budget-viz">
+      <div class="budget-row">
+        <div class="budget-label">一般会計</div>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar general"></div>
+          <span class="budget-bar-label" style="color: var(--ink); text-shadow: none;">国会議決・政治的統制あり</span>
+        </div>
+        <div class="budget-amount">約120兆円</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">特別会計</div>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar special"></div>
+          <span class="budget-bar-label">政治的統制の不在</span>
+        </div>
+        <div class="budget-amount">約400兆円</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>規模が一般会計の3倍以上あるにもかかわらず、民主的統制は格段に薄い。道路特定財源や年金積立金はその典型であり、政治的意思決定がほぼ届かない領域の大きさそのものを示している。</p>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- Chapter 4 -->
+  <div class="chapter">
+    <span class="chapter-num">Chapter IV</span>
+    <h2 class="chapter-title">構造的問題の核心</h2>
+
+    <div class="section">
+      <p>以上を整理すると、日本の統治構造の問題は三層構造として捉えられる。</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">第一層：財務省による実質的拒否権</h3>
+      <p>予算編成権は政策実現の最終関門だ。内閣主導の戦略がいかに野心的であっても、財源の壁を越えなければ絵に描いた餅に終わる。「攻め」の政策は常に「守り」の財政規律と交渉を強いられる。</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">第二層：縦割りによる全体最適の不在</h3>
+      <p>各省庁は自省の論理で動き、国全体の設計図を描く主体が存在しない。内閣官房が横断調整を担うはずだが、各省の縄張り意識が調整を困難にする。戦略17分野の多くが複数省庁にまたがる課題であることを考えれば、この構造的問題の深刻さは明らかだ。</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">第三層：民主的統制の空洞化</h3>
+      <p>制度の複雑性と情報の非対称性により、国民・国会による監視が実質的に機能しない。特別会計という巨大な裁量空間の存在は、その極端な例である。<strong>見えないものは問われない</strong>という構造が、現状維持のバイアスを強化し続けている。</p>
+    </div>
+
+    <div class="callout">
+      <p>日本の政策構造の全体地図が公共財として広く共有されていないこと自体が、問題の一部である。構造を可視化することは、問いを立てることの第一歩だ。</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- APPENDIX -->
+<div class="appendix-header">
+  <h2>資　料</h2>
+  <p>日本政策・予算アーキテクチャ：構成表</p>
+</div>
+
+<div class="container" style="padding-top: 48px;">
+
+  <!-- Table 0: Architecture -->
+  <div class="appendix-section">
+    <div class="appendix-section-header">【全体図】日本政策・予算アーキテクチャ</div>
+    <div class="appendix-table-wrap">
+      <table class="arch-table">
+        <thead>
+          <tr>
+            <th>区分</th>
+            <th>内閣主導</th>
+            <th>各省庁主導</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>戦略分野</td>
+            <td>
+              1. 安全保障・防衛<br>
+              2. 次世代半導体・量子<br>
+              3. AI・フィジカルAI<br>
+              4. 造船・海洋防衛装備<br>
+              5. 航空宇宙（空飛ぶクルマ）<br>
+              6. GX・次世代エネルギー<br>
+              7. 海洋ドローン・海洋資源<br>
+              8. サイバーセキュリティ<br>
+              9. 合成生物学・バイオ<br>
+              10. 通信インフラ（6G）<br>
+              11. フードテック・農業<br>
+              12. スマート農業<br>
+              13. ロボット・自動化<br>
+              14. 先端素材<br>
+              15. 国土強靭化・防災<br>
+              16. インフラ輸出<br>
+              17. 人材・教育
+            </td>
+            <td>
+              厚生労働省：社会保障・年金、医療・介護<br>
+              総務省：地方財政・地方交付税<br>
+              国土交通省：公共事業・都市計画<br>
+              文部科学省：教育・基礎研究<br>
+              経済産業省：中小企業・通商運用<br>
+              農林水産省：農政・漁業行政<br>
+              財務省：予算編成・税制・国庫<br>
+              外務省：外交・ODA運営<br>
+              環境省：公害・自然環境・廃棄物<br>
+              法務省：入管・司法・登記<br>
+              防衛省：通常の防衛運用<br>
+              内閣官房・府：横断調整・危機管理
+            </td>
+          </tr>
+          <tr>
+            <td>予算規模</td>
+            <td>一般会計：約120兆円</td>
+            <td>特別会計：約400兆円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Table 1: 17 fields -->
+  <div class="appendix-section">
+    <div class="appendix-section-header">【詳細表1】戦略17分野：目的・課題分析ガイド</div>
+    <div class="appendix-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>分野</th>
+            <th>主な狙い（戦略目標）</th>
+            <th>抱える課題・ボトルネック</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1. 安全保障・防衛</td><td>抑止力の抜本的強化</td><td>コスト高と調達リードタイム</td></tr>
+          <tr><td>2. 次世代半導体・量子</td><td>技術覇権の確保・サプライチェーン強靭化</td><td>莫大な初期投資とグローバル競争</td></tr>
+          <tr><td>3. AI・フィジカルAI</td><td>産業の高度化と労働代替</td><td>法的ルール整備とデータ利活用</td></tr>
+          <tr><td>4. 造船・海洋防衛装備</td><td>海洋国としての防衛インフラ再建</td><td>熟練工不足と生産設備更新</td></tr>
+          <tr><td>5. 航空宇宙</td><td>次世代モビリティの国産化</td><td>規制緩和と社会実装のスピード感</td></tr>
+          <tr><td>6. GX・次世代エネ</td><td>エネルギー安保と脱炭素の両立</td><td>社会受容性と既存インフラの転換</td></tr>
+          <tr><td>7. 海洋ドローン・資源</td><td>排他的経済水域の利活用</td><td>探査・抽出技術の確立と環境配慮</td></tr>
+          <tr><td>8. サイバーセキュリティ</td><td>国家レベルの防護力構築</td><td>人材不足と民間との連携</td></tr>
+          <tr><td>9. 合成生物学・バイオ</td><td>新産業創出と健康長寿</td><td>倫理的課題とスタートアップ支援</td></tr>
+          <tr><td>10. 通信インフラ（6G）</td><td>次世代通信の標準化</td><td>国際標準争いと設備投資負担</td></tr>
+          <tr><td>11. フードテック・農業</td><td>食料安保の強化</td><td>既存の生産・流通モデルとの摩擦</td></tr>
+          <tr><td>12. スマート農業</td><td>省力化と生産性最大化</td><td>実装コストとデジタル格差</td></tr>
+          <tr><td>13. ロボット・自動化</td><td>人手不足の解消</td><td>現場導入時のカスタマイズ性</td></tr>
+          <tr><td>14. 先端素材</td><td>部品供給網の優位性維持</td><td>研究開発の長期化</td></tr>
+          <tr><td>15. 国土強靭化・防災</td><td>防災インフラのDX化</td><td>予算の継続性と現場維持の難しさ</td></tr>
+          <tr><td>16. インフラ輸出</td><td>国家戦略としてのシステム売り込み</td><td>現地法規制と価格競争</td></tr>
+          <tr><td>17. 人材・教育</td><td>戦略的分野へのリスキリング</td><td>教育現場の保守性と変化対応力</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Table 2: Ministries -->
+  <div class="appendix-section">
+    <div class="appendix-section-header">【詳細表2】省庁運用：役割・構造的ボトルネックガイド</div>
+    <div class="appendix-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>省庁</th>
+            <th>主な領域</th>
+            <th>役割の核心（運用）</th>
+            <th>抱える課題・構造的ボトルネック</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>厚生労働省</td><td>社会保障・年金</td><td>生活保障の永続性確保</td><td>高齢化による給付膨張と固定費化</td></tr>
+          <tr><td>総務省</td><td>地方財政・交付税</td><td>全国一律の行政水準維持</td><td>地方自治体の自立性と財政の硬直化</td></tr>
+          <tr><td>国土交通省</td><td>公共事業・住宅</td><td>国土の物理基盤維持</td><td>老朽化インフラの更新と維持費増大</td></tr>
+          <tr><td>文部科学省</td><td>教育・文化・研究</td><td>公教育と科学の基盤形成</td><td>少子化対応と教育の質・現場の保守性</td></tr>
+          <tr><td>経済産業省</td><td>産業政策・中小支援</td><td>既存産業の存続と支援</td><td>特定業界への過度な補助金依存</td></tr>
+          <tr><td>農林水産省</td><td>農政・漁業</td><td>国内供給網の保護</td><td>担い手不足と国際競争力の低下</td></tr>
+          <tr><td>財務省</td><td>予算編成・税制</td><td>国庫収支の規律</td><td>予算の聖域化と財政規律維持の矛盾</td></tr>
+          <tr><td>外務省</td><td>外交・在外公館</td><td>国際関係と国益調整</td><td>条約等に基づく定型運用の先行</td></tr>
+          <tr><td>環境省</td><td>公害・環境・ゴミ</td><td>自然・環境の保全</td><td>規制の複雑化と利害調整の困難さ</td></tr>
+          <tr><td>法務省</td><td>入管・司法・登記</td><td>社会の法秩序維持</td><td>行政手続きの遅れとDX化の遅延</td></tr>
+          <tr><td>防衛省</td><td>通常防衛運用</td><td>既存装備の維持・運営</td><td>装備の近代化と人件費の圧迫</td></tr>
+          <tr><td>内閣官房・府</td><td>横断調整・危機管理</td><td>政策間の整合性調整</td><td>各省庁の縄張り意識による調整難航</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    本資料は公開情報をもとにした政策構造の分析的整理であり、特定の政治的立場を代表するものではない。
+  </div>
+
+</div>
+
+</body>
+</html>
