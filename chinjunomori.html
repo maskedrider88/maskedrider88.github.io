@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>街なか鎮守の森 — 空想メモ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Yuji+Syuku&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-dark: #e8dcc8;
+    --ink: #2a1f0e;
+    --ink-light: #5a4a30;
+    --forest: #3d5c3a;
+    --forest-light: #7a9e70;
+    --shrine-red: #9e2a1c;
+    --accent: #c4823a;
+    --gray: #8a7a65;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Klee One', 'Hiragino Kaku Gothic ProN', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* paper texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(42,31,14,0.04) 28px,
+        rgba(42,31,14,0.04) 29px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* header */
+  .header {
+    margin-bottom: 56px;
+    border-bottom: 2.5px solid var(--ink);
+    padding-bottom: 32px;
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 60%;
+    height: 1.5px;
+    background: var(--ink);
+    opacity: 0.3;
+  }
+
+  .label-small {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gray);
+    margin-bottom: 14px;
+    font-family: 'Klee One', sans-serif;
+  }
+
+  h1 {
+    font-family: 'Yuji Syuku', serif;
+    font-size: clamp(42px, 9vw, 72px);
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .tagline {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--ink-light);
+    max-width: 520px;
+  }
+
+  /* section */
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-title {
+    font-family: 'Yuji Syuku', serif;
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--shrine-red);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transform: rotate(45deg);
+  }
+
+  /* diagram container */
+  .diagram-wrap {
+    background: #faf5ec;
+    border: 1.5px solid var(--ink);
+    border-radius: 3px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 3px 3px 0 var(--ink-light);
+  }
+
+  .diagram-caption {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.12em;
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* prose */
+  .prose {
+    font-size: 15px;
+    line-height: 2.1;
+    color: var(--ink-light);
+  }
+
+  .prose p {
+    margin-bottom: 20px;
+  }
+
+  .prose strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .point-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+  }
+
+  .point-list li {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--paper-dark);
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink-light);
+    align-items: flex-start;
+  }
+
+  .point-list li:last-child { border-bottom: none; }
+
+  .point-mark {
+    flex-shrink: 0;
+    font-family: 'Yuji Syuku', serif;
+    font-size: 18px;
+    color: var(--forest);
+    margin-top: -2px;
+  }
+
+  /* footer */
+  .footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--paper-dark);
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* stamp decoration */
+  .stamp {
+    position: absolute;
+    top: -18px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--shrine-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Yuji Syuku', serif;
+    font-size: 9px;
+    color: var(--shrine-red);
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0.7;
+    transform: rotate(8deg);
+    background: var(--paper);
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <p class="label-small">空想メモ / KŪSŌ MEMO</p>
+    <h1>街なか鎮守の森</h1>
+    <p class="tagline">
+      荒れた神社を街へ迎え、<br>
+      寂れた商店街を参道に変える——<br>
+      ただそれだけの、小さな発想。
+    </p>
+  </header>
+
+  <!-- 俯瞰図 -->
+  <section class="section">
+    <h2 class="section-title">俯瞰図（上から見た配置）</h2>
+    <div class="diagram-wrap">
+      <div class="stamp">空想<br>図面</div>
+      <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#2a1f0e" opacity="0.6"/>
+          </marker>
+        </defs>
+
+        <!-- background -->
+        <rect width="700" height="280" fill="#faf5ec"/>
+
+        <!-- 鎮守の森エリア -->
+        <rect x="18" y="40" width="140" height="200" rx="4" fill="#d4e8c8" stroke="#3d5c3a" stroke-width="1.8" opacity="0.7" filter="url(#rough)"/>
+
+        <!-- trees (top view circles) -->
+        <!-- big trees -->
+        <circle cx="55" cy="85" r="22" fill="#3d5c3a" opacity="0.75" filter="url(#rough)"/>
+        <circle cx="110" cy="75" r="18" fill="#4a6e44" opacity="0.7" filter="url(#rough)"/>
+        <circle cx="45" cy="145" r="20" fill="#3d5c3a" opacity="0.72" filter="url(#rough)"/>
+        <circle cx="105" cy="140" r="24" fill="#527a4a" opacity="0.68" filter="url(#rough)"/>
+        <circle cx="80" cy="200" r="19" fill="#3d5c3a" opacity="0.73" filter="url(#rough)"/>
+        <circle cx="130" cy="190" r="15" fill="#4a6e44" opacity="0.65" filter="url(#rough)"/>
+        <circle cx="42" cy="220" r="14" fill="#527a4a" opacity="0.6" filter="url(#rough)"/>
+        <!-- small trees -->
+        <circle cx="88" cy="110" r="10" fill="#6a9460" opacity="0.55" filter="url(#rough)"/>
+        <circle cx="55" cy="175" r="10" fill="#6a9460" opacity="0.5" filter="url(#rough)"/>
+        <circle cx="130" cy="120" r="11" fill="#6a9460" opacity="0.52" filter="url(#rough)"/>
+
+        <!-- 小さな祠 -->
+        <rect x="70" y="100" width="22" height="18" rx="1" fill="#9e2a1c" opacity="0.55" filter="url(#rough)"/>
+        <polygon points="70,100 92,100 81,91" fill="#7a2018" opacity="0.6" filter="url(#rough)"/>
+
+        <!-- 森ラベル -->
+        <text x="88" y="268" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="13" fill="#3d5c3a" font-weight="600">鎮守の森</text>
+        <text x="88" y="282" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="10" fill="#7a9e70">（整理した空き店舗跡）</text>
+
+        <!-- 間（gap） -->
+        <rect x="158" y="80" width="55" height="120" fill="none" stroke="#2a1f0e" stroke-width="1" stroke-dasharray="4,4" opacity="0.3" filter="url(#rough)"/>
+        <text x="185" y="150" text-anchor="middle" font-family="'Yuji Syuku', serif" font-size="13" fill="#5a4a30">間</text>
+        <text x="185" y="170" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="9.5" fill="#8a7a65">結界</text>
+
+        <!-- 鳥居 -->
+        <!-- 柱 -->
+        <line x1="207" y1="95" x2="207" y2="195" stroke="#9e2a1c" stroke-width="5" stroke-linecap="round" filter="url(#rough)"/>
+        <line x1="225" y1="95" x2="225" y2="195" stroke="#9e2a1c" stroke-width="5" stroke-linecap="round" filter="url(#rough)"/>
+        <!-- 笠木 -->
+        <line x1="200" y1="97" x2="232" y2="97" stroke="#9e2a1c" stroke-width="6" stroke-linecap="round" filter="url(#rough)"/>
+        <!-- 貫 -->
+        <line x1="203" y1="112" x2="229" y2="112" stroke="#9e2a1c" stroke-width="3.5" stroke-linecap="round" filter="url(#rough)"/>
+
+        <text x="216" y="215" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="11" fill="#9e2a1c">鳥居</text>
+
+        <!-- 商店街（参道）本体 -->
+        <!-- 上の壁 -->
+        <path d="M240,60 L650,60" stroke="#2a1f0e" stroke-width="2" fill="none" filter="url(#rough)"/>
+        <!-- 下の壁 -->
+        <path d="M240,220 L650,220" stroke="#2a1f0e" stroke-width="2" fill="none" filter="url(#rough)"/>
+
+        <!-- 参道の道 -->
+        <rect x="240" y="110" width="410" height="60" fill="#e8dcc8" opacity="0.6"/>
+        <!-- 中央線（参道センター） -->
+        <line x1="240" y1="140" x2="650" y2="140" stroke="#2a1f0e" stroke-width="1" stroke-dasharray="8,6" opacity="0.25"/>
+
+        <!-- 上側の店舗たち -->
+        <rect x="248" y="63" width="52" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="308" y="63" width="48" height="44" fill="#ddd0b8" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="364" y="63" width="60" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="432" y="63" width="44" height="44" fill="#d8ccb4" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="484" y="63" width="56" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="548" y="63" width="50" height="44" fill="#ddd0b8" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="606" y="63" width="40" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+
+        <!-- 下側の店舗たち -->
+        <rect x="248" y="173" width="52" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="308" y="173" width="48" height="44" fill="#ddd0b8" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="364" y="173" width="60" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="432" y="173" width="44" height="44" fill="#d8ccb4" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="484" y="173" width="56" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="548" y="173" width="50" height="44" fill="#ddd0b8" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+        <rect x="606" y="173" width="40" height="44" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.2" filter="url(#rough)"/>
+
+        <!-- シャッター店（閉店） -->
+        <line x1="248" y1="63" x2="300" y2="107" stroke="#8a7a65" stroke-width="1" opacity="0.4"/>
+        <line x1="300" y1="63" x2="248" y2="107" stroke="#8a7a65" stroke-width="1" opacity="0.4"/>
+        <line x1="548" y1="173" x2="598" y2="217" stroke="#8a7a65" stroke-width="1" opacity="0.4"/>
+        <line x1="598" y1="173" x2="548" y2="217" stroke="#8a7a65" stroke-width="1" opacity="0.4"/>
+
+        <!-- 歩く人のアイコン（小さく） -->
+        <circle cx="380" cy="133" r="5" fill="#2a1f0e" opacity="0.35" filter="url(#rough)"/>
+        <line x1="380" y1="138" x2="380" y2="155" stroke="#2a1f0e" stroke-width="2" opacity="0.35" filter="url(#rough)"/>
+        <line x1="380" y1="142" x2="372" y2="150" stroke="#2a1f0e" stroke-width="2" opacity="0.35" filter="url(#rough)"/>
+        <line x1="380" y1="142" x2="388" y2="150" stroke="#2a1f0e" stroke-width="2" opacity="0.35" filter="url(#rough)"/>
+
+        <circle cx="460" cy="135" r="5" fill="#2a1f0e" opacity="0.28" filter="url(#rough)"/>
+        <line x1="460" y1="140" x2="460" y2="157" stroke="#2a1f0e" stroke-width="2" opacity="0.28" filter="url(#rough)"/>
+
+        <!-- 参道ラベル -->
+        <text x="440" y="148" text-anchor="middle" font-family="'Yuji Syuku', serif" font-size="11" fill="#5a4a30" opacity="0.5">参　道</text>
+
+        <!-- 商店街ラベル -->
+        <text x="440" y="250" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="13" fill="#5a4a30" font-weight="600">商店街（自動的に参道になる）</text>
+
+        <!-- 方向矢印 -->
+        <line x1="635" y1="140" x2="660" y2="140" stroke="#2a1f0e" stroke-width="1.5" opacity="0.5" marker-end="url(#arrow)"/>
+        <text x="665" y="136" font-family="'Klee One', sans-serif" font-size="10" fill="#8a7a65">街へ</text>
+
+        <!-- 左矢印（森から） -->
+        <line x1="170" y1="140" x2="195" y2="140" stroke="#2a1f0e" stroke-width="1.5" opacity="0.4" marker-end="url(#arrow)"/>
+      </svg>
+      <p class="diagram-caption">↑ 平面図 — 端に森を置いただけで、あとは自然に参道になる</p>
+    </div>
+  </section>
+
+  <!-- 断面・正面図 -->
+  <section class="section">
+    <h2 class="section-title">断面・正面イメージ図</h2>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="rough2" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <!-- sky gradient -->
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#dce8f0" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#faf5ec" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <rect width="700" height="320" fill="#faf5ec"/>
+
+        <!-- 空 -->
+        <rect x="0" y="0" width="700" height="200" fill="url(#skyGrad)"/>
+
+        <!-- 地面 -->
+        <line x1="0" y1="250" x2="700" y2="250" stroke="#5a4a30" stroke-width="2" filter="url(#rough2)"/>
+
+        <!-- === 鎮守の森エリア === -->
+        <!-- 土台・苔地面 -->
+        <ellipse cx="115" cy="252" rx="110" ry="10" fill="#4a7040" opacity="0.25" filter="url(#rough2)"/>
+
+        <!-- 大木1 -->
+        <rect x="52" y="105" width="18" height="148" rx="3" fill="#6b4c2a" filter="url(#rough2)"/>
+        <ellipse cx="61" cy="108" rx="42" ry="38" fill="#3d5c3a" opacity="0.85" filter="url(#rough2)"/>
+        <ellipse cx="61" cy="95" rx="30" ry="28" fill="#4a6e44" opacity="0.8" filter="url(#rough2)"/>
+        <ellipse cx="68" cy="82" rx="20" ry="18" fill="#527a4a" opacity="0.75" filter="url(#rough2)"/>
+
+        <!-- 大木2 -->
+        <rect x="125" y="130" width="15" height="122" rx="3" fill="#7a5530" filter="url(#rough2)"/>
+        <ellipse cx="132" cy="133" rx="36" ry="32" fill="#3d5c3a" opacity="0.8" filter="url(#rough2)"/>
+        <ellipse cx="135" cy="118" rx="26" ry="24" fill="#4a6e44" opacity="0.78" filter="url(#rough2)"/>
+        <ellipse cx="130" cy="105" rx="18" ry="16" fill="#527a4a" opacity="0.7" filter="url(#rough2)"/>
+
+        <!-- 小木 -->
+        <rect x="93" y="175" width="10" height="77" rx="2" fill="#8a6038" filter="url(#rough2)"/>
+        <ellipse cx="98" cy="175" rx="22" ry="20" fill="#4a6e44" opacity="0.7" filter="url(#rough2)"/>
+
+        <!-- 祠 -->
+        <rect x="82" y="200" width="30" height="25" fill="#9e2a1c" opacity="0.7" filter="url(#rough2)"/>
+        <polygon points="79,200 115,200 97,185" fill="#7a2018" opacity="0.75" filter="url(#rough2)"/>
+        <rect x="93" y="210" width="8" height="15" fill="#2a1f0e" opacity="0.5" filter="url(#rough2)"/>
+
+        <!-- 森ラベル -->
+        <text x="100" y="278" text-anchor="middle" font-family="'Yuji Syuku', serif" font-size="14" fill="#3d5c3a" font-weight="600">鎮守の森</text>
+
+        <!-- === 間・結界 === -->
+        <line x1="228" y1="80" x2="228" y2="255" stroke="#2a1f0e" stroke-width="1" stroke-dasharray="5,5" opacity="0.2" filter="url(#rough2)"/>
+        <text x="252" y="180" text-anchor="middle" font-family="'Yuji Syuku', serif" font-size="14" fill="#8a7a65">間</text>
+
+        <!-- === 鳥居 === -->
+        <!-- 笠木（一番上の横木） -->
+        <path d="M230,105 Q252,100 275,105" stroke="#9e2a1c" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#rough2)"/>
+        <!-- 島木（二段目） -->
+        <line x1="235" y1="122" x2="272" y2="122" stroke="#9e2a1c" stroke-width="5" stroke-linecap="round" filter="url(#rough2)"/>
+        <!-- 左柱 -->
+        <line x1="238" y1="108" x2="238" y2="252" stroke="#9e2a1c" stroke-width="7" stroke-linecap="round" filter="url(#rough2)"/>
+        <!-- 右柱 -->
+        <line x1="268" y1="108" x2="268" y2="252" stroke="#9e2a1c" stroke-width="7" stroke-linecap="round" filter="url(#rough2)"/>
+
+        <text x="253" y="278" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="11" fill="#9e2a1c">鳥居</text>
+
+        <!-- === 商店街（参道） === -->
+        <!-- 左の建物 -->
+        <rect x="285" y="130" width="70" height="122" fill="#d8ccb4" stroke="#5a4a30" stroke-width="1.5" filter="url(#rough2)"/>
+        <rect x="290" y="125" width="70" height="15" fill="#c0b098" stroke="#5a4a30" stroke-width="1" filter="url(#rough2)"/><!-- 庇 -->
+        <rect x="300" y="175" width="22" height="50" fill="#2a1f0e" opacity="0.35" filter="url(#rough2)"/><!-- 入口 -->
+        <rect x="328" y="185" width="20" height="35" fill="#2a1f0e" opacity="0.2" filter="url(#rough2)"/><!-- 窓 -->
+        <!-- ガラスの反射 -->
+        <line x1="293" y1="175" x2="305" y2="163" stroke="white" stroke-width="1" opacity="0.4"/>
+
+        <!-- 右の建物 -->
+        <rect x="540" y="130" width="70" height="122" fill="#e0d4bc" stroke="#5a4a30" stroke-width="1.5" filter="url(#rough2)"/>
+        <rect x="535" y="125" width="75" height="15" fill="#c8bca0" stroke="#5a4a30" stroke-width="1" filter="url(#rough2)"/>
+        <rect x="545" y="175" width="22" height="50" fill="#2a1f0e" opacity="0.3" filter="url(#rough2)"/>
+        <rect x="578" y="185" width="20" height="35" fill="#2a1f0e" opacity="0.18" filter="url(#rough2)"/>
+        <line x1="543" y1="165" x2="555" y2="153" stroke="white" stroke-width="1" opacity="0.35"/>
+
+        <!-- 中景の建物（奥行き感） -->
+        <rect x="360" y="150" width="55" height="102" fill="#ccc0a8" stroke="#8a7a65" stroke-width="1" opacity="0.6" filter="url(#rough2)"/>
+        <rect x="470" y="145" width="65" height="107" fill="#d0c4ac" stroke="#8a7a65" stroke-width="1" opacity="0.65" filter="url(#rough2)"/>
+        <rect x="420" y="155" width="45" height="97" fill="#c8bca4" stroke="#8a7a65" stroke-width="1" opacity="0.55" filter="url(#rough2)"/>
+
+        <!-- アーケード屋根 -->
+        <path d="M285,130 L285,118 Q412,105 540,118 L540,130" stroke="#8a7a65" stroke-width="1.5" fill="#e8dcc8" opacity="0.5" filter="url(#rough2)"/>
+
+        <!-- 参道（石畳） -->
+        <rect x="285" y="248" width="255" height="8" fill="#c8b898" opacity="0.5"/>
+        <!-- 石畳のライン -->
+        <line x1="315" y1="248" x2="315" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="345" y1="248" x2="345" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="375" y1="248" x2="375" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="405" y1="248" x2="405" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="435" y1="248" x2="435" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="465" y1="248" x2="465" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="495" y1="248" x2="495" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+        <line x1="525" y1="248" x2="525" y2="256" stroke="#a89878" stroke-width="1" opacity="0.4"/>
+
+        <!-- 歩く人 -->
+        <circle cx="410" cy="222" r="7" fill="#2a1f0e" opacity="0.4" filter="url(#rough2)"/>
+        <line x1="410" y1="229" x2="410" y2="248" stroke="#2a1f0e" stroke-width="2.5" opacity="0.4" filter="url(#rough2)"/>
+        <line x1="410" y1="236" x2="401" y2="245" stroke="#2a1f0e" stroke-width="2" opacity="0.4" filter="url(#rough2)"/>
+        <line x1="410" y1="236" x2="419" y2="245" stroke="#2a1f0e" stroke-width="2" opacity="0.4" filter="url(#rough2)"/>
+
+        <!-- 商店街ラベル -->
+        <text x="412" y="280" text-anchor="middle" font-family="'Yuji Syuku', serif" font-size="14" fill="#5a4a30" font-weight="600">商店街</text>
+        <text x="412" y="298" text-anchor="middle" font-family="'Klee One', sans-serif" font-size="11" fill="#8a7a65">（参道として機能する）</text>
+
+        <!-- 涼しい風の表現 -->
+        <path d="M155,120 Q170,115 165,125 Q180,118 175,130" stroke="#7ab8d0" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#rough2)"/>
+        <path d="M160,140 Q178,134 173,146" stroke="#7ab8d0" stroke-width="1.2" fill="none" opacity="0.4" filter="url(#rough2)"/>
+        <text x="190" y="122" font-family="'Klee One', sans-serif" font-size="10" fill="#7ab8d0" opacity="0.8">涼</text>
+      </svg>
+      <p class="diagram-caption">↑ 正面・断面イメージ — 森の涼しさが、鳥居を越えて参道へ流れ込む</p>
+    </div>
+  </section>
+
+  <!-- 説明文 -->
+  <section class="section">
+    <h2 class="section-title">このアイデアについて</h2>
+    <div class="prose">
+      <p>
+        日本には登録されていないものを含めると<strong>20万近くの神社</strong>があるという。
+        神主もなく、氏子も減り、荒れ果てたまま忘れられていく場所が少なくない。
+        一方で、全国の商店街もまた、シャッターを閉じたまま時間が止まっている。
+      </p>
+      <p>
+        この空想は、その二つの「空洞」を重ね合わせる試みだ。
+      </p>
+    </div>
+
+    <ul class="point-list">
+      <li>
+        <span class="point-mark">森</span>
+        <span>荒れた神社から<strong>勧請（分霊）</strong>し、商店街の一端を鎮守の森として整える。社殿は人間が建てた装置にすぎず、神は移動できる——神道はもともとそう考えてきた。</span>
+      </li>
+      <li>
+        <span class="point-mark">間</span>
+        <span>森と商店街のあいだに<strong>少しの空間</strong>を設ける。鳥居一基。それだけで「境界」が生まれ、空気が変わる場所になる。</span>
+      </li>
+      <li>
+        <span class="point-mark">道</span>
+        <span>森を端に置けば、商店街は<strong>自動的に参道になる</strong>。意図しなくても、そうなる。歴史的には参道の賑わいが門前町を生んだ。今度はその逆——商店街が参道に戻る。</span>
+      </li>
+      <li>
+        <span class="point-mark">涼</span>
+        <span>街なかの鎮守の森は、<strong>生活と地続きの聖域</strong>だ。帰り道にふらっと立ち寄れる。子どもが遊ぶ。土の匂い、木陰の涼しさ。神聖さと気持ちよさが一致している場所。</span>
+      </li>
+    </ul>
+
+    <div class="prose" style="margin-top:28px;">
+      <p>
+        実現性はともかく、骨格はシンプルだ。<br>
+        <strong>荒れた神社の受け皿をつくる。</strong><br>
+        <strong>商店街に緑と祈りの場を戻す。</strong><br>
+        それだけのことが、いくつもの問題に斜めから刺さっていく。
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>街なか鎮守の森 — 空想メモ</span>
+    <span>2025年 / ある会話から生まれた構想</span>
+  </footer>
+
+</div>
+</body>
+</html>
