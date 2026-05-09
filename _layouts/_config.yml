@@ -1,0 +1,10 @@
+# _config.yml
+# 既存の設定があればそこに追記する。
+# この defaults ブロックだけ追加すればOK。
+
+defaults:
+  - scope:
+      path: ""        # リポジトリ内のすべてのファイルに適用
+      type: "pages"   # ページ種別（HTMLファイル）
+    values:
+      layout: "default"  # _layouts/default.html を使う
