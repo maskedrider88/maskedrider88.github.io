@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <style>
+    /* ── トップナビゲーションバー ── */
+    #site-topnav {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      padding: 0.45em 1.2em;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom: 1px solid #e0ddd8;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+      font-size: 0.82rem;
+      color: #555;
+      letter-spacing: 0.04em;
+    }
+
+    #site-topnav a {
+      color: #4a4035;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      transition: color 0.2s;
+    }
+
+    #site-topnav a:hover {
+      color: #000;
+    }
+
+    #site-topnav .nav-arrow {
+      font-size: 0.75em;
+      opacity: 0.6;
+    }
+
+    #site-topnav .nav-site-name {
+      font-weight: 500;
+    }
+
+    /* トップページ自身では非表示 */
+    body.is-top #site-topnav {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="site-topnav" aria-label="サイトナビゲーション">
+    <a href="{{ '/' | relative_url }}">
+      <span class="nav-arrow">←</span>
+      <span class="nav-site-name">資料室</span>
+    </a>
+  </nav>
+
+  {{ content }}
+
+  <script>
+    // トップページ（index.html / /）では非表示にする
+    if (location.pathname === '/' || location.pathname === '/index.html') {
+      document.body.classList.add('is-top');
+    }
+  </script>
+
+</body>
+</html>
