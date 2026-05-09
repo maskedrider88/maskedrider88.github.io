@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maskedrider88 — 資料室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Shippori+Mincho:wght@400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141210;
+      --surface: #1e1b17;
+      --border: #2e2a24;
+      --text: #d8cfc4;
+      --muted: #7a7167;
+      --accent: #b8975a;
+      --accent-soft: rgba(184,151,90,0.12);
+      --hover-surface: #272219;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      min-height: 100vh;
+      line-height: 1.8;
+      /* subtle paper grain */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* ─── Layout ─── */
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ─── Header ─── */
+    header {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(184,151,90,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+
+    .header-desc {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.35s;
+    }
+
+    /* ─── Section ─── */
+    .section {
+      padding: 52px 0;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Cards ─── */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px 28px;
+      position: relative;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .card:hover {
+      background: var(--hover-surface);
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .card::after {
+      content: '→';
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.2s, right 0.2s;
+    }
+    .card:hover::after {
+      opacity: 1;
+      right: 20px;
+    }
+
+    .card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* staggered card animations */
+    .card:nth-child(1) { animation-delay: 0.45s; }
+    .card:nth-child(2) { animation-delay: 0.55s; }
+    .card:nth-child(3) { animation-delay: 0.65s; }
+    .card:nth-child(4) { animation-delay: 0.75s; }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--accent); }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <header>
+      <p class="header-label">maskedrider88 / GitHub Pages</p>
+      <h1>資料室</h1>
+      <p class="header-desc">
+        調べたこと、考えたことを、読めるかたちに整えておく場所。
+      </p>
+    </header>
+
+    <section class="section">
+      <p class="section-label">公開資料</p>
+      <div class="card-list">
+
+        <a class="card" href="24sekkiColorTable.html">
+          <p class="card-tag">暦 / 色彩</p>
+          <p class="card-title">二十四節気 カラーテーブル</p>
+          <p class="card-desc">日本の季節区分「二十四節気」と伝統色との対応をまとめた参照表。</p>
+        </a>
+
+        <a class="card" href="chinjunomori.html">
+          <p class="card-tag">文化 / 慣習</p>
+          <p class="card-title">鎮守の森と郷に従う知恵</p>
+          <p class="card-desc">「郷に入っては郷に従え」の精神を世界の宗教・地域の視点から横断的に検討する資料。</p>
+        </a>
+
+        <a class="card" href="japan_policy_report.html">
+          <p class="card-tag">法律 / 比較政策</p>
+          <p class="card-title">国旗冒涜法 G20比較レポート</p>
+          <p class="card-desc">G20各国における国旗・国家象徴の保護に関する法制度を比較した調査資料。</p>
+        </a>
+
+        <a class="card" href="sound-outdoor_speech.html">
+          <p class="card-tag">法律 / 表現の自由</p>
+          <p class="card-title">屋外音響・演説規制の整理</p>
+          <p class="card-desc">屋外での音声表現・拡声器使用にまつわる規制の構造と論点をまとめた資料。</p>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      <span class="footer-note">© maskedrider88</span>
+      <a class="footer-link" href="https://github.com/maskedrider88/maskedrider88.github.io" target="_blank" rel="noopener">GitHub ↗</a>
+    </footer>
+
+  </div>
+</body>
+</html>
