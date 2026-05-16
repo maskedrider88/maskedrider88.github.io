@@ -1,0 +1,117 @@
+<h2 class="sr-only">引き算フィルタ法 タスク記法マニュアル</h2>
+
+<div>
+    <p>
+    タスク管理を考えててアイゼンハワーマトリクス法をエディタ上でやれたらって思って作ってみた。</br>
+    結果としてtodo.txtに似たものになったけど自分で考えたにしては上出来。</br>
+    時間表記は自分なりの工夫が使いやすさに繋がってると思う。</br>
+    簡単なルールだけでそこそこ実用的なものになった。自画自賛。</br>
+    </p>
+</div>
+
+<div style="padding: 2rem 0;">
+
+  <div style="margin-bottom: 2rem;">
+    <p style="font-size: 13px; color: var(--color-text-tertiary); margin: 0 0 4px;">俺得タスク管理フォーマット</p>
+    <h1 style="font-size: 22px; font-weight: 500; margin: 0 0 8px;">引き算フィルタ法</h1>
+    <p style="font-size: 14px; color: var(--color-text-secondary); margin: 0;">テキストファイル一枚で完結するタスク管理記法</p>
+  </div>
+
+  <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem; margin-bottom: 1.5rem;">
+    <h2 style="font-size: 16px; font-weight: 500; margin: 0 0 1rem;">基本の流れ</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px;">
+      <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px;">
+        <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0 0 4px;">step 1</p>
+        <p style="font-size: 14px; font-weight: 500; margin: 0 0 4px;">書く</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0;">思うままに箇条書き。改行するだけ。</p>
+      </div>
+      <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px;">
+        <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0 0 4px;">step 2</p>
+        <p style="font-size: 14px; font-weight: 500; margin: 0 0 4px;">投げる</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0;">人に頼めるものに <code style="font-size:11px">@名前</code> をつける。</p>
+      </div>
+      <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px;">
+        <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0 0 4px;">step 3</p>
+        <p style="font-size: 14px; font-weight: 500; margin: 0 0 4px;">追いやる</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0;">やらなくていいものは行頭に空白を大量に入れる。</p>
+      </div>
+      <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px;">
+        <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0 0 4px;">step 4</p>
+        <p style="font-size: 14px; font-weight: 500; margin: 0 0 4px;">予約する</p>
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0;">残ったものに日時を書いてソート。</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem; margin-bottom: 1.5rem;">
+    <h2 style="font-size: 16px; font-weight: 500; margin: 0 0 1rem;">日時の書き方</h2>
+
+    <div style="margin-bottom: 12px;">
+      <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0 0 8px;">フォーマット：<code style="font-size:12px">YYMMDD HHMM[記号]</code>　行頭に書く。ソート基準になる。</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+        <code style="font-size: 13px;">260517 1000 打ち合わせ</code>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">ちょうど10:00に</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+        <code style="font-size: 13px;">260518 1500&lt; 銀行に行く</code>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">15:00までに</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+        <code style="font-size: 13px;">260518 1700&gt; 友人と飲む</code>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">17:00以降に</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+        <code style="font-size: 13px;">260518 1200&gt;1300&lt; 昼飯</code>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">12:00〜13:00の間に</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: center; padding: 10px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md);">
+        <code style="font-size: 13px;">260521 資料作成</code>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">時刻省略＝その日中に</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem; margin-bottom: 1.5rem;">
+    <h2 style="font-size: 16px; font-weight: 500; margin: 0 0 1rem;">実例</h2>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; font-family: var(--font-mono); font-size: 13px; line-height: 2;">
+      <div>260517 1000 打ち合わせ</div>
+      <div>260517 1500&lt; 銀行に行く</div>
+      <div>260518 1200&gt;1300&lt; 歯医者</div>
+      <div>260521 企画書のアウトライン</div>
+      <div style="color: var(--color-text-info);">@田中 議事録まとめ</div>
+      <div style="color: var(--color-text-info);">@佐藤 会場予約</div>
+      <div style="color: var(--color-text-tertiary);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;なんとなく気になってたやつ</div>
+    </div>
+    <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 8px 0 0;">ソートすると日時順のスケジュールになる。@行は委譲済み。薄い行は視界の外。</p>
+  </div>
+
+  <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem;">
+    <h2 style="font-size: 16px; font-weight: 500; margin: 0 0 12px;">記号一覧</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px;">
+      <div style="padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: center;">
+        <code style="font-size: 14px; display: block; margin-bottom: 4px;">@名前</code>
+        <span style="font-size: 11px; color: var(--color-text-secondary);">委譲</span>
+      </div>
+      <div style="padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: center;">
+        <code style="font-size: 14px; display: block; margin-bottom: 4px;">1500&lt;</code>
+        <span style="font-size: 11px; color: var(--color-text-secondary);">〜までに</span>
+      </div>
+      <div style="padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: center;">
+        <code style="font-size: 14px; display: block; margin-bottom: 4px;">1700&gt;</code>
+        <span style="font-size: 11px; color: var(--color-text-secondary);">〜以降に</span>
+      </div>
+      <div style="padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: center;">
+        <code style="font-size: 14px; display: block; margin-bottom: 4px;">1200&gt;1300&lt;</code>
+        <span style="font-size: 11px; color: var(--color-text-secondary);">時間範囲</span>
+      </div>
+      <div style="padding: 8px 12px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); text-align: center;">
+        <code style="font-size: 14px; display: block; margin-bottom: 4px;">[空白20個]</code>
+        <span style="font-size: 11px; color: var(--color-text-secondary);">保留・追放</span>
+      </div>
+    </div>
+  </div>
+
+</div>
