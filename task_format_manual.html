@@ -3,6 +3,328 @@ layout: default
 title: 引き算フィルタ法 タスク記法マニュアル
 ---
 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1d27;
+    --border: #2a2d3a;
+    --accent: #4f9cf9;
+    --accent2: #7ee8a2;
+    --accent3: #f9a84f;
+    --text: #e2e6f0;
+    --muted: #7a7f94;
+    --danger: #f97070;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* grid lines bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,156,249,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,156,249,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  /* header */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -.01em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* section */
+  section { margin-bottom: 56px; }
+
+  h2 {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 28px 0 10px;
+  }
+
+  p { color: var(--text); margin-bottom: 12px; }
+
+  /* issue cards */
+  .issue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 540px) { .issue-grid { grid-template-columns: 1fr; } }
+
+  .issue-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .issue-card .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .tag-warn { background: rgba(249,168,79,.12); color: var(--accent3); border: 1px solid rgba(249,168,79,.25); }
+  .tag-err  { background: rgba(249,112,112,.12); color: var(--danger); border: 1px solid rgba(249,112,112,.25); }
+
+  .issue-card .title { font-weight: 700; color: #fff; margin-bottom: 8px; font-size: 15px; }
+  .issue-card .body  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* callout */
+  .callout {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .callout strong { color: var(--text); }
+
+  /* tradeoff */
+  .tradeoff {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 480px) {
+    .tradeoff { grid-template-columns: 1fr; }
+    .vs { display: none; }
+  }
+
+  .tradeoff-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .tradeoff-box .label-sm { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: .08em; margin-bottom: 8px; }
+  .good  { color: var(--accent2); }
+  .bad   { color: var(--danger); }
+  .vs    { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); text-align: center; }
+
+  /* price block */
+  .price-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 480px) { .price-block { grid-template-columns: 1fr; } }
+
+  .price-block .item-label { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--muted); letter-spacing: .08em; margin-bottom: 6px; }
+  .price-block .item-value { font-size: 22px; font-weight: 700; color: #fff; }
+  .price-block .item-note  { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .price-block .accent-val { color: var(--accent2); }
+
+  /* steps */
+  .steps { margin: 20px 0; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(79,156,249,.1);
+    border: 1px solid rgba(79,156,249,.2);
+    border-radius: 6px;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-body { font-size: 14px; }
+  .step-body strong { color: #fff; display: block; margin-bottom: 4px; font-size: 15px; }
+  .step-body span { color: var(--muted); }
+
+  /* table */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(42,45,58,.6);
+    vertical-align: top;
+    color: var(--text);
+  }
+
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--danger); font-weight: 500; }
+
+  /* presets */
+  .preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .preset-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .preset-card .p-icon { font-size: 18px; margin-bottom: 8px; }
+  .preset-card .p-title { color: #fff; font-weight: 500; margin-bottom: 4px; }
+  .preset-card .p-note { color: var(--muted); font-size: 12px; }
+
+  /* conclusion */
+  .conclusion {
+    background: linear-gradient(135deg, rgba(79,156,249,.06), rgba(126,232,162,.04));
+    border: 1px solid rgba(79,156,249,.2);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 40px;
+  }
+
+  .conclusion p { font-size: 15px; color: var(--text); line-height: 1.85; }
+  .conclusion strong { color: var(--accent2); }
+
+  /* footer */
+  footer {
+    margin-top: 72px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .05em;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="site-header">
+    <p class="label">// sound — outdoor speech</p>
+    <h1>引引き算フィルタ法 タスク記法マニュアル</h1>
+    <p class="subtitle">テキストファイル一枚で完結するタスク管理記法</p>
+  </header>
+
+
 <h2 class="sr-only">引き算フィルタ法 タスク記法マニュアル</h2>
 
 <div>
