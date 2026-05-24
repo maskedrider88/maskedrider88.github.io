@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カレーうどん神仏習合論 / The Gospel of Curry Udon</title>
+<meta name="description" content="A rigorous academic investigation into why Curry Udon is the supreme unification of Shinto, Buddhism, and gut health. 腸活から始まった啓示の記録。">
+<meta property="og:title" content="カレーうどん神仏習合論">
+<meta property="og:description" content="From gut health to divine revelation. Japan, explained.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Serif+JP:wght@300;400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1713;
+    --ink-mid: #4a4540;
+    --ink-muted: #7a7570;
+    --ink-faint: #b0ada8;
+    --paper: #f7f4ee;
+    --paper-warm: #ede8df;
+    --paper-darker: #ddd8ce;
+    --accent: #8b3a1a;
+    --accent-light: #c4692e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif JP', serif;
+    line-height: 1.9;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.03) 39px,
+      rgba(255,255,255,0.03) 40px
+    );
+  }
+  .hero-mantra {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: clamp(22px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    color: var(--paper);
+    margin-bottom: 0.4rem;
+    position: relative;
+  }
+  .hero-mantra-en {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .hero-title-jp {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .hero-title-en {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3vw, 22px);
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .hero-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    line-height: 1.7;
+  }
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--ink-muted);
+    margin: 2rem auto;
+  }
+
+  /* ── ABSTRACT ── */
+  .abstract-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--paper-darker);
+  }
+  .abstract-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-family: 'IM Fell English', serif;
+  }
+  .abstract-text {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 2;
+    font-style: italic;
+  }
+  .abstract-text strong {
+    color: var(--ink);
+    font-style: normal;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  /* ── CHAPTER ── */
+  .chapter {
+    padding: 2.5rem 0;
+    border-bottom: 0.5px solid var(--paper-darker);
+  }
+  .chapter:last-of-type { border-bottom: none; }
+
+  .chapter-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.8rem;
+  }
+  .chapter-num {
+    font-family: 'IM Fell English', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+  }
+  .chapter-num-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--paper-darker);
+  }
+
+  .chapter-title-jp {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 0.2rem;
+  }
+  .chapter-title-en {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-bottom: 1.2rem;
+  }
+
+  .chapter-body {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 2;
+  }
+  .chapter-body p { margin-bottom: 0.8rem; }
+  .chapter-body p:last-child { margin-bottom: 0; }
+
+  /* ── ORACLE ── */
+  .oracle {
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem 1rem 1.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--paper-warm);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.8;
+  }
+  .oracle cite {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 0.4rem;
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LOGIC CHAIN ── */
+  .logic-chain {
+    margin: 1.2rem 0;
+    padding: 1.2rem 1.4rem;
+    background: var(--paper-warm);
+    border: 0.5px solid var(--paper-darker);
+    border-radius: 4px;
+  }
+  .logic-step {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 14px;
+    padding: 3px 0;
+  }
+  .logic-tag {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    min-width: 60px;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+  }
+  .logic-content { color: var(--ink-mid); }
+  .logic-content strong { color: var(--ink); }
+  .logic-arrow {
+    font-size: 11px;
+    color: var(--ink-faint);
+    padding-left: 70px;
+  }
+
+  /* ── GAIJIN REACTIONS ── */
+  .reactions {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .reaction {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    align-items: baseline;
+  }
+  .reaction-flag {
+    font-size: 13px;
+    min-width: 80px;
+    color: var(--ink-faint);
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+  }
+  .reaction-text { color: var(--ink-mid); }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin: 2rem 0 0;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .conclusion-en {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+  }
+  .conclusion-jp {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .conclusion-sub {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  /* ── CLOSING MANTRA ── */
+  .closing-mantra {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--paper-warm);
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+  .closing-mantra-text {
+    font-family: 'Zen Old Mincho', serif;
+    font-size: clamp(24px, 5vw, 44px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+  .closing-mantra-en {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-faint);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.9;
+    border-top: 0.5px solid var(--paper-darker);
+  }
+  footer a { color: var(--ink-muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 3.5rem 1.5rem 3rem; }
+    main { padding: 0 1.25rem 3rem; }
+    .abstract-wrap { padding: 2.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-eyebrow">A Rigorous Academic Investigation ／ 令和 某日</p>
+  <div class="hero-mantra">南無カレー大師遍照金剛<br>全世界に広まれ。</div>
+  <p class="hero-mantra-en">Namu Kare Daishi Henjō Kongō — Spread unto all the world.</p>
+  <div class="hero-divider"></div>
+  <h1 class="hero-title-jp">カレーうどん神仏習合論</h1>
+  <p class="hero-title-en">The Gospel of Curry Udon:<br>A Unified Theory of Shinto, Buddhism &amp; Gut Health</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">グルテンフリーへの素朴な懐疑から出発し、古事記・仏教・幕末民衆運動を経て、宇宙の真理に至るまでの対話録。<br><br>Starting from a mild skepticism toward gluten-free diets, this paper arrives — via the Kojiki, Buddhism, and an Edo-period peasant uprising — at the fundamental truth of the universe.</p>
+</header>
+
+<div class="abstract-wrap">
+  <p class="abstract-label">Abstract / 要旨</p>
+  <p class="abstract-text">
+    This paper demonstrates that <strong>Curry Udon (カレーうどん)</strong> is not merely a food, but the inevitable apex of Japanese religious syncretism. We trace a logical chain from gut health science through Shinto cosmogony, Buddhist spice culture, the pilgrimage economy of Shikoku, and the spontaneous mass ecstasy of the Edo period, arriving at the inescapable conclusion: <strong>Curry Udon is sacred. Its splashing is divine will. Resistance is heresy.</strong>
+  </p>
+</div>
+
+<main>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Chapter I</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">グルテンフリーという冒涜</h2>
+    <p class="chapter-title-en">Gluten-Free as Blasphemy</p>
+    <div class="chapter-body">
+      <p>腸活のついでにグルテンフリーを実践する者は多い。しかし問うべきである——香川県民を見よ。</p>
+      <p>Many practice gluten-free diets alongside gut health routines. But consider: the citizens of Kagawa Prefecture consume udon at a rate that staggers the imagination. If gluten were universally harmful, Kagawa would be a prefecture of invalids. It is not. Ergo:</p>
+      <div class="oracle">
+        グルテンフリーを推奨する者は、神の意思に逆らっている可能性がある。<br>
+        <cite>Those who promote gluten-free diets may be acting against divine will.</cite>
+      </div>
+      <p>Note: scientific evidence for gluten-free benefits is robust for those with celiac disease or NCGS. For everyone else, the evidence is, to put it charitably, thin. Kagawa Prefecture has been conducting the control group experiment for centuries.</p>
+    </div>
+  </article>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Chapter II</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">香川県民は神の隣人である</h2>
+    <p class="chapter-title-en">The People of Kagawa Are Neighbors of the Gods</p>
+    <div class="chapter-body">
+      <p>According to the Kojiki (古事記), Japan's oldest chronicle, the divine couple Izanagi and Izanami first created Awajishima (淡路島). Shikoku — home of Kagawa Prefecture — was the third island. The people of Kagawa have lived next door to the birthplace of creation since the beginning of time.</p>
+      <p>Awajishima is also Japan's foremost producer of <strong>onions (玉ねぎ)</strong>. Onions are the foundation of curry's sweetness. This is not a coincidence. This is cosmological planning.</p>
+    </div>
+  </article>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Chapter III</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">食の神仏習合：カレーうどん大統一理論</h2>
+    <p class="chapter-title-en">Culinary Syncretism: The Grand Unified Theory</p>
+    <div class="chapter-body">
+      <p>Buddhism originated in the Indian subcontinent — the same land that gave the world curry spices. Both traveled the Silk Road eastward. Both arrived in Japan. Japan, uniquely, fused them with its native Shinto tradition into <em>Shinbutsu-shūgō</em> (神仏習合). The logical continuation of this process is self-evident:</p>
+      <div class="logic-chain">
+        <div class="logic-step"><span class="logic-tag">Shinto</span><span class="logic-content">Izanagi &amp; Izanami → Awajishima → <strong>onions</strong></span></div>
+        <div class="logic-arrow">↓</div>
+        <div class="logic-step"><span class="logic-tag">Buddhism</span><span class="logic-content">India → Silk Road → Japan → <strong>curry spices</strong></span></div>
+        <div class="logic-arrow">↓</div>
+        <div class="logic-step"><span class="logic-tag">Syncretism</span><span class="logic-content">神仏習合 → culinary fusion</span></div>
+        <div class="logic-arrow">↓</div>
+        <div class="logic-step"><span class="logic-tag">Result</span><span class="logic-content"><strong>Curry Udon: onions × spices × udon — a holy trinity</strong></span></div>
+      </div>
+      <p>The Meiji government's Shinbutsu Bunri (神仏分離) decree of 1868 attempted to separate Shinto and Buddhism. Curry Udon ignored this entirely and has remained a syncretic masterpiece to this day.</p>
+    </div>
+  </article>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Chapter IV</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">お遍路黄衣化改革論</h2>
+    <p class="chapter-title-en">On the Necessary Reform of Pilgrimage Vestments</p>
+    <div class="chapter-body">
+      <p>The Shikoku Pilgrimage (四国八十八箇所) is a masterpiece of systems design: 88 sacred sites, distributed economic stimulus, the psychological support of "Dōgyō ninin" (同行二人 — "two traveling together," meaning one is always with Kōbō Daishi), and gamified completion mechanics 1,200 years before gamification was a word.</p>
+      <p>However: pilgrims wear white (白衣). This is a critical design flaw.</p>
+      <div class="oracle">
+        「カレーうどんは跳ねるものなり。抗うことなかれ。白き衣を着て挑む者は、己の未熟を知れ。」<br>
+        <cite>"Curry Udon shall splash. Resist it not. Those who wear white and dare approach have only themselves to blame." — Kare Daimyōjin (カレー大明神)</cite>
+      </div>
+      <p>The case for <strong>yellow vestments (黄衣)</strong> is overwhelming: turmeric's natural antimicrobial properties, superior visibility on mountain trails, and — critically — total immunity to curry udon splash events. Kūkai would absolutely have chosen yellow had curry udon existed in the 9th century. This is simply a 1,200-year-old patch that needs applying.</p>
+    </div>
+  </article>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Chapter V</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">ええじゃないか ——民衆の悟りと汁跳ねの受容</h2>
+    <p class="chapter-title-en">Ee Ja Naika: Peasant Enlightenment and the Acceptance of Splash</p>
+    <div class="chapter-body">
+      <p>In 1867, as the Edo period collapsed, a spontaneous mass movement swept Japan. People danced in the streets chanting <em>"Ee ja naika!"</em> (ええじゃないか — "Ain't it fine? / Whatever!"). Its origins were mysterious. Its purpose was unclear. It spread virally, which is to say: it was Japan's first meme.</p>
+      <p>What does this have to do with curry udon? Everything. When the broth hits your white shirt, there are two responses available to the human spirit:</p>
+      <p>① Lament. ② <strong>ええじゃないか。</strong></p>
+      <p>The enlightened practitioner chooses ②. This is the fusion of resignation (諦め) and festival spirit (祭り心) — the highest psychological state available to the curry udon enthusiast.</p>
+    </div>
+  </article>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Chapter VI</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">スパイスと線香の同一起源仮説</h2>
+    <p class="chapter-title-en">The Common Origin of Spice and Incense</p>
+    <div class="chapter-body">
+      <p>Ancient Indian religious ceremonies burned spices as offerings. The aromatic smoke was communication with the divine. This practice traveled the same Silk Road routes as Buddhism, arriving in Japan where it bifurcated into:</p>
+      <p>① <strong>線香 (Senkō)</strong> — incense, burned at temples and on the Shikoku pilgrimage<br>② <strong>スパイス</strong> — curry spices, consumed in curry udon</p>
+      <p>Both are, fundamentally, the same thing: <em>fragrant matter from India, used to reach a higher state of being.</em> The pilgrimage path smells of incense. The kitchen smells of curry. These are not different journeys.</p>
+      <div class="oracle">
+        南無カレー大師遍照金剛<br>
+        <cite>Namu Kare Daishi Henjō Kongō — "Hail, Curry Daishi, Illuminator of the Universe"</cite>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter">
+    <div class="chapter-meta">
+      <span class="chapter-num">Appendix</span>
+      <div class="chapter-num-line"></div>
+    </div>
+    <h2 class="chapter-title-jp">海外勢の反応（予測）</h2>
+    <p class="chapter-title-en">Anticipated International Reception</p>
+    <div class="chapter-body">
+      <p>Should this paper achieve global distribution, the following reactions are statistically probable:</p>
+      <div class="reactions">
+        <div class="reaction"><span class="reaction-flag">🇺🇸 American</span><span class="reaction-text">"So gluten-free is… against GOD??"</span></div>
+        <div class="reaction"><span class="reaction-flag">🇮🇳 Indian</span><span class="reaction-text">"Wait. Our spices became a religion in Japan?? Respect."</span></div>
+        <div class="reaction"><span class="reaction-flag">🇫🇷 French</span><span class="reaction-text"><em>(reads silently while holding wine, expression unreadable)</em></span></div>
+        <div class="reaction"><span class="reaction-flag">🇮🇹 Italian</span><span class="reaction-text">"Curry udon? Apologize to pasta."</span></div>
+        <div class="reaction"><span class="reaction-flag">🏔️ Kagawa</span><span class="reaction-text"><em>(eating udon, unbothered)</em> "せやな。"</span></div>
+        <div class="reaction"><span class="reaction-flag">🌍 Everyone</span><span class="reaction-text">"Japanese: crazy. <em>(bookmarks page, reads to end)</em>"</span></div>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<div class="closing-mantra">
+  <p class="closing-mantra-text">南無カレー大師遍照金剛<br>全世界に広まれ。</p>
+  <p class="closing-mantra-en">Namu Kare Daishi Henjō Kongō — Spread unto all the world.</p>
+</div>
+
+<div class="conclusion">
+  <p class="conclusion-en">Conclusion / 結論</p>
+  <p class="conclusion-jp">カレーうどんに<br>足を向けて寝てはならない</p>
+  <p class="conclusion-sub">
+    One must never sleep with one's feet pointed toward Curry Udon.<br>
+    （会ったら真っ先に食べてよい。それが正しい信仰の形である。）<br>
+    <em>Upon encountering it, eat immediately. This is the correct expression of faith.</em>
+  </p>
+</div>
+
+<footer>
+  <p>※ 本論文はネタです。腸活は続けてください。カレーうどんの汁跳ねによる被害につき筆者は一切の責任を負いません。</p>
+  <p><em>This paper is satire. Please continue your gut health routines. The author accepts no liability for curry-related laundry incidents.</em></p>
+  <br>
+  <p>参考文献 / References：ある日の会話ログ全文 / One conversation log, date redacted.</p>
+  <p style="margin-top: 1rem;">ええじゃないか。</p>
+</footer>
+
+</body>
+</html>
