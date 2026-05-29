@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>楽しい未来の事例紹介 — AI時代の地方回帰ビジョン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-light: #4a4a44;
+    --ink-muted: #8a8a82;
+    --paper: #f7f4ee;
+    --paper-warm: #efe9dc;
+    --paper-deep: #e2d9c8;
+    --accent: #5a6e4a;
+    --accent-light: #8fa67c;
+    --accent-muted: #d4deca;
+    --rule: #c8bfaa;
+    --serif: 'Noto Serif JP', serif;
+    --sans: 'Noto Sans JP', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* Header */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  }
+
+  .header-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--accent-light);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    color: var(--paper);
+  }
+
+  .header-sub {
+    font-size: 13px;
+    color: rgba(247,244,238,0.55);
+    font-family: var(--sans);
+  }
+
+  /* Nav */
+  nav {
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 12px;
+    color: var(--ink-light);
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    font-family: var(--sans);
+  }
+
+  nav a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* Main */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* Opening quote */
+  .opening {
+    border-left: 3px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 3rem;
+    background: var(--paper-warm);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .opening p {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink-light);
+    line-height: 1.9;
+  }
+
+  .opening .attr {
+    margin-top: 0.6rem;
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-family: var(--sans);
+    letter-spacing: 0.05em;
+  }
+
+  /* Section */
+  section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--accent-muted);
+    line-height: 1;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  /* Flow chain */
+  .flow-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    background: var(--paper-deep);
+    border-radius: 4px;
+  }
+
+  .flow-pill {
+    font-size: 12px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 4px 10px;
+    color: var(--ink-light);
+    font-family: var(--sans);
+  }
+
+  .flow-arrow {
+    color: var(--accent-light);
+    font-size: 14px;
+  }
+
+  /* Card grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .card {
+    background: var(--paper);
+    padding: 1.2rem 1.3rem;
+    transition: background 0.2s;
+  }
+
+  .card:hover {
+    background: var(--paper-warm);
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    font-family: var(--sans);
+  }
+
+  .card h3 {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.75;
+    font-family: var(--sans);
+  }
+
+  /* Reversal table */
+  .reversal {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 0.5rem;
+  }
+
+  .reversal th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .reversal td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-light);
+    vertical-align: top;
+    font-family: var(--sans);
+  }
+
+  .reversal tr:last-child td { border-bottom: none; }
+  .reversal tr:nth-child(even) td { background: var(--paper-warm); }
+
+  .reversal .before { color: var(--ink-muted); }
+  .reversal .after { color: var(--accent); font-weight: 500; }
+
+  /* Highlight box */
+  .highlight {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.8rem 2rem;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+  }
+
+  .highlight p {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(247,244,238,0.85);
+  }
+
+  .highlight strong {
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    padding: 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-family: var(--sans);
+    line-height: 1.8;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header { padding: 2rem 1.2rem 1.8rem; }
+    main { padding: 2rem 1.2rem 4rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .flow-chain { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-label">国まもりプロジェクト — 付論</p>
+  <h1>楽しい未来の事例紹介<br>AI時代の地方回帰ビジョン</h1>
+  <p class="header-sub">たたき台版 · 2026年</p>
+</header>
+
+<nav>
+  <a href="#premise">前提</a>
+  <a href="#life">暮らし</a>
+  <a href="#infra">インフラ</a>
+  <a href="#education">教育</a>
+  <a href="#economy">経済</a>
+  <a href="#reversal">逆転表</a>
+</nav>
+
+<main>
+
+  <div class="opening">
+    <p>AIが「首から上」の人間活動を引き受けてくれるなら、人間はむしろ「首から下」の本来の活動に戻れる。これは「奪われる」話ではなく、「お任せする」話だ。幻想の運営者が人間からAIに交代するだけで、人間はその幻想から降りる自由を手に入れる。</p>
+    <p class="attr">— 今日の雑談から生まれた設計図</p>
+  </div>
+
+  <!-- 1. 前提 -->
+  <section id="premise">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>前提——首から上と首から下の乖離</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-label">産業革命との違い</p>
+        <h3>筋肉の代替 vs 認知の代替</h3>
+        <p>産業革命は「筋肉の代替」だった。人間は頭を使う仕事に逃げることができた。AIは「認知の代替」であり、同じ逃げ方が使えない。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">現代の歪み</p>
+        <h3>首から上が偉いという価値観</h3>
+        <p>文字と貨幣の発明以来、首から上が首から下を管理する構造が生まれた。20世紀のホワイトカラー社会でその逆転が完成した。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">AIがもたらす逆説</p>
+        <h3>首から下の再評価</h3>
+        <p>AIが代替できないのは身体性・場所性・人と人の偶発的な接触。「手作り」「地元産」「職人の技」が希少価値として浮上しつつある。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 暮らし -->
+  <section id="life">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>暮らし——古の暮らしへの接近</h2>
+    </div>
+
+    <div class="flow-chain">
+      <span class="flow-pill">AI化</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">首から上をお任せ</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">地方回帰・二拠点生活</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">古の暮らしに接近</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">身体活動が日常化</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill">共同体復活</span>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-label">居住</p>
+        <h3>地方ベース＋二拠点生活</h3>
+        <p>庭付き一戸建てを生活の基盤に。都市へは用があるときだけアクセスする。東京詣り・京都参りがハレの非日常イベントになる。参勤交代の民間版とも言える。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">身体</p>
+        <h3>生活そのものがジムになる</h3>
+        <p>農的暮らし・手仕事・移動が日常の身体活動を担う。わざわざジムに通う必要がなくなる。首から下の活動が健康維持と直結する。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">共同体</p>
+        <h3>核家族の解体と子育ての変化</h3>
+        <p>核家族は都市型の産物。地方では祖父母・親戚・近所が子育てに自然に関わる構造が復活する。子育て不安の多くは孤立した育児構造から来ている。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">旅行</p>
+        <h3>均質化からの解放</h3>
+        <p>共同体が生きた地方には「その土地固有の体験」が生まれる。農作業を手伝う、地元の祭りに混ぜてもらう。お金で買うサービスではなく、関係性に入れてもらう体験。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">ペット・家畜</p>
+        <h3>生き物と暮らす</h3>
+        <p>庭付きで大型犬・鶏・ヤギも選択肢に。ペットと家畜の境界が曖昧になる。生き物と暮らすことが子供の情操教育にも直結し、共同体の絆を強める。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. インフラ -->
+  <section id="infra">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>インフラ——二拠点を支える基盤</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-label">移動</p>
+        <h3>交通網の全国整備</h3>
+        <p>鉄道・路線バス・タクシー（自動運転との組み合わせ）が二拠点生活を支えるインフラに。過疎地ほど道路が空いており、自動運転向きという逆転の優位性がある。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">医療</p>
+        <h3>遠隔医療と予防医療の両立</h3>
+        <p>AIと遠隔診断で日常医療をカバー。手術など必要なときだけ都市へ出る「医療版二拠点」。古の暮らし自体が身体を動かし、旬のものを食べ、孤立しないという予防医療の実践になる。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">地域拠点</p>
+        <h3>現代版村の辻</h3>
+        <p>かかりつけ医＋郵便局＋行政窓口＋宅配受け取りが一体化した地域拠点。AIが処理を担い、人間が温度を添える。待合室が自然に共同体の結節点になる。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 教育 -->
+  <section id="education">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>教育——価値観の逆転</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-label">大学の役割</p>
+        <h3>地方国公立大学の重要性</h3>
+        <p>「首から上の知識習得」としての都市大学の必然性が薄れる。地方国公立大学が農業・林業・地域医療・食文化など首から下の知識と技術の継承拠点として機能する。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">希少価値</p>
+        <h3>農業・畜産・獣医学部が難関に</h3>
+        <p>AIが代替できない専門知識の希少価値が上がる。農業大学・畜産大学・獣医学部が社会的ステータスとして逆転する可能性がある。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">地域定着</p>
+        <h3>学び＝地域への根付き</h3>
+        <p>若者が地方に留まりながら学び、そのまま地域に根を張る循環が生まれる。18歳で全員東京へという一極集中モデルへの文化的な問い直しが起きる。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 経済 -->
+  <section id="economy">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>経済——信頼の記号と実物</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-label">都市の役割</p>
+        <h3>信頼の記号をAIが回す</h3>
+        <p>お金は「信頼の記号」。大都市はAIが信頼の記号を高精度で処理し続ける。人間はそこに時々アクセスして消費する。</p>
+      </div>
+      <div class="card">
+        <p class="card-label">地方の役割</p>
+        <h3>信頼の実物を人間が紡ぐ</h3>
+        <p>野菜をくれる、手を貸してくれる、困ったら助け合う。これは全部「信頼の交換」であり、お金に換算されていないだけで経済の本質そのもの。GDPに計上されないが、AIが絶対に代替できない。</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>「経済的に遅れている」と見なされてきた地方の互助ネットワークは、実は数字に見えていないだけで、ずっとそこにあった。AI時代に<strong>その価値がようやく可視化される</strong>かもしれない。</p>
+    </div>
+  </section>
+
+  <!-- 6. 逆転表 -->
+  <section id="reversal">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>逆転表——AI以前とAI以後</h2>
+    </div>
+
+    <table class="reversal">
+      <thead>
+        <tr>
+          <th style="width:30%">項目</th>
+          <th style="width:35%">AI以前</th>
+          <th style="width:35%">AI以後（想定）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>評価される仕事</td>
+          <td class="before">首から上（管理・分析・文書）</td>
+          <td class="after">首から下（農・工・介護・手仕事）</td>
+        </tr>
+        <tr>
+          <td>難関大学のイメージ</td>
+          <td class="before">都市の総合大学・法学部・経済学部</td>
+          <td class="after">農業大学・畜産大学・獣医学部</td>
+        </tr>
+        <tr>
+          <td>地方の立ち位置</td>
+          <td class="before">都会に遅れた場所</td>
+          <td class="after">ベースキャンプとして最適な場所</td>
+        </tr>
+        <tr>
+          <td>旅行の価値</td>
+          <td class="before">均質化されたサービスの消費</td>
+          <td class="after">関係性に入れてもらう固有の体験</td>
+        </tr>
+        <tr>
+          <td>健康維持</td>
+          <td class="before">ジムに通う</td>
+          <td class="after">生活そのものが身体活動</td>
+        </tr>
+        <tr>
+          <td>子育て</td>
+          <td class="before">孤立した核家族が全部抱える</td>
+          <td class="after">共同体全体で関わる</td>
+        </tr>
+        <tr>
+          <td>都市の使い方</td>
+          <td class="before">住む場所</td>
+          <td class="after">たまに詣でる場所（ハレ）</td>
+        </tr>
+        <tr>
+          <td>医療へのアクセス</td>
+          <td class="before">都市に行かないと良い医療が受けられない</td>
+          <td class="after">AIと遠隔診断で地方でも十分対応</td>
+        </tr>
+        <tr>
+          <td>経済的価値の源泉</td>
+          <td class="before">GDPに計上される生産活動</td>
+          <td class="after">信頼の実物（互助・関係性）も含む</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <p>国まもりプロジェクト 付論 — AI時代の地方回帰ビジョン（たたき台版・2026年）</p>
+  <p style="margin-top: 0.4rem;">「奪われる」ではなく「お任せする」——フレームひとつで未来は明るくなる。</p>
+</footer>
+
+</body>
+</html>
