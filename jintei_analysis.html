@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「人手不足」の構造を読む｜国まもりプロジェクト</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --bg: #F7F4EF;
+    --paper: #FDFAF5;
+    --accent: #2C5F8A;
+    --accent-light: #E8F0F8;
+    --rule: #D8D0C4;
+    --muted: #7a7060;
+    --highlight: #FFF3CD;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.9;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+    background: var(--paper);
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.06);
+  }
+
+  /* ヘッダー */
+  .doc-header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .doc-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .doc-meta span::before {
+    content: '｜';
+    margin-right: 16px;
+  }
+  .doc-meta span:first-child::before { content: ''; margin: 0; }
+
+  h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* セクション */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2 .sec-num {
+    font-size: 11px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-bottom: 12px;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* 強調ボックス */
+  .callout {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--accent);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* 問いボックス */
+  .question-box {
+    background: var(--highlight);
+    border: 1px solid #E8D97A;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+
+  .question-box p {
+    font-size: 14px;
+    margin: 0;
+    color: #5a4a00;
+  }
+
+  .question-box .q-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #8a7000;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* フッター */
+  .doc-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .doc-footer span {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="doc-header">
+    <div class="doc-meta">
+      <span>国まもりプロジェクト</span>
+      <span>構造分析</span>
+      <span>雇用・賃金</span>
+    </div>
+    <h1>「人手不足」の構造を読む</h1>
+    <p class="subtitle">終身雇用・年功序列が生んだ人件費の歪みと、賃金問題が見えにくくなるメカニズム</p>
+  </header>
+
+  <div class="section">
+    <h2><span class="sec-num">前提</span>人手不足か、賃金不足か</h2>
+    <p>現在の「人手不足」は、人が絶対的に足りない問題というより、現在の賃金・雇用制度では人が集まらない問題として見ることができる。</p>
+    <div class="callout">
+      <p>賃金水準が十分であれば応募者が増える業種・職種は多く、「人不足」と「賃金不足」は区別して論じる必要がある。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="sec-num">01</span>高度成長期の遺産</h2>
+    <p>終身雇用・年功序列は、会社が成長し続ける時代には合理的な制度だった。ポストが増え続ける環境では、年齢とともに給与が上がる仕組みは十分に機能した。</p>
+    <p>この制度は、企業への長期的なコミットメントを促し、熟練技能の蓄積や組織の安定に貢献する面もあった。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="sec-num">02</span>低成長時代との齟齬</h2>
+    <p>経済が停滞・縮小に転じると、成果や努力に関係なく年齢で給与が上がり続ける構造が、50〜60代への人件費集中を生んだ。</p>
+    <p>ただし、これは年功序列だけの問題ではない。低成長・労働生産性の停滞・一部業種の低賃金構造など、複数の要因が絡み合っている。年功序列はその主要因の一つと位置づけるのが正確だろう。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="sec-num">03</span>なぜ変えられなかったか</h2>
+    <p>経営者自身もその制度で上がってきた当事者であり、対象となるのは長年ともに働いてきた同僚・先輩・上司にあたる人たちだ。</p>
+    <p>合理的判断より人間関係が優先されやすい構造の中で、制度改革は進まなかった。加えて、大企業正社員を中心とした既得権層が政治的にも声が大きく、外圧がなければ変化が起きにくい状況が続いてきた。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="sec-num">04</span>しわ寄せの構造</h2>
+    <p>固定化した高コスト人件費を抱えたまま新規採用を行うため、若年層・中途採用者への賃金提示が抑えられる。</p>
+    <p>その結果、募集を出しても応募が集まらず「人手不足」として認識される。本来は賃金の問題であるにもかかわらず、人数の問題として語られる構図がここに生まれる。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="sec-num">05</span>外国人労働者受け入れという選択</h2>
+    <p>外国人労働者受け入れには、人口減少対応・地方の労働力確保・介護や建設の担い手不足など複数の背景がある。一概に否定できる問題ではない。</p>
+    <div class="question-box">
+      <span class="q-label">問い</span>
+      <p>本来議論すべき賃金体系や雇用制度の問題が十分に検討されないまま、「人手不足解消」という言葉で進められている面はないか。「人手不足」という言葉が、賃金や雇用制度の問題を見えにくくしている面があるとすれば、それは誰の利益になるのか。</p>
+    </div>
+  </div>
+
+  <footer class="doc-footer">
+    <span>国まもりプロジェクト</span>
+    <span>maskedrider88.github.io</span>
+  </footer>
+
+</div>
+</body>
+</html>
