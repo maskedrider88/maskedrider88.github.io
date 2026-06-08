@@ -1,0 +1,237 @@
+
+<h2 class="sr-only">法人税減税の財源まとめ——所得税・消費税も添えて。各税制改正の財源明示の有無を一覧化した資料ページ。</h2>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+.page { padding: 2rem 0 3rem; max-width: 720px; }
+.title-block { margin-bottom: 2rem; border-left: 3px solid #E24B4A; padding-left: 1rem; }
+.title-block h1 { font-size: 22px; font-weight: 500; color: var(--color-text-primary); line-height: 1.3; }
+.title-block .sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 6px; }
+.section { margin-bottom: 2.5rem; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 10px; padding-left: 2px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; table-layout: fixed; }
+thead th { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-align: left; padding: 6px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+thead th:nth-child(1) { width: 60px; }
+thead th:nth-child(2) { width: 140px; }
+thead th:nth-child(3) { width: 180px; }
+thead th:nth-child(4) { }
+tbody tr { border-bottom: 0.5px solid var(--color-border-tertiary); }
+tbody tr:last-child { border-bottom: none; }
+td { padding: 9px 10px; vertical-align: top; color: var(--color-text-primary); line-height: 1.5; }
+td:nth-child(1) { color: var(--color-text-secondary); font-size: 12px; }
+td.rate { font-size: 12px; color: var(--color-text-secondary); }
+.badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+.b-none { background: #FCEBEB; color: #A32D2D; }
+.b-shohi { background: #FAEEDA; color: #854F0B; }
+.b-kokuai { background: #E6F1FB; color: #185FA5; }
+.b-kazei { background: #EAF3DE; color: #3B6D11; }
+.b-shakai { background: #FBEAF0; color: #993556; }
+@media (prefers-color-scheme: dark) {
+  .b-none { background: #501313; color: #F7C1C1; }
+  .b-shohi { background: #412402; color: #FAC775; }
+  .b-kokuai { background: #042C53; color: #B5D4F4; }
+  .b-kazei { background: #173404; color: #C0DD97; }
+  .b-shakai { background: #4B1528; color: #F4C0D1; }
+}
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--color-text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+.highlight-row td { background: color-mix(in srgb, #E24B4A 6%, transparent); }
+.arrow { color: var(--color-text-tertiary); font-size: 11px; margin: 0 2px; }
+.note { font-size: 12px; color: var(--color-text-secondary); margin-top: 1rem; padding: 10px 14px; border-left: 2px solid var(--color-border-secondary); line-height: 1.6; }
+.source { font-size: 11px; color: var(--color-text-tertiary); margin-top: 2rem; }
+.section-divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 2rem 0; }
+</style>
+
+<div class="page">
+  <div class="title-block">
+    <h1>法人税減税の財源まとめ。</h1>
+    <div class="sub">——所得税・消費税も添えて。　1984〜2024年　主要税制改正における財源の有無</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-dot" style="background:#E24B4A"></span>財源の明示なし</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#EF9F27"></span>消費税増税で穴埋め</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#378ADD"></span>国債増発</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#639922"></span>課税ベース拡大（名目）</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#D4537E"></span>社会保障財源と明記</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">法人税　法定税率の引き下げ</div>
+    <table>
+      <thead>
+        <tr>
+          <th>年</th>
+          <th>税率の変化</th>
+          <th>名目上の根拠</th>
+          <th>実際の財源・補填</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1984</td>
+          <td class="rate">43.3% <span class="arrow">→</span> 40%</td>
+          <td>国際競争力の強化</td>
+          <td><span class="badge b-none">財源の明示なし</span></td>
+        </tr>
+        <tr>
+          <td>1989</td>
+          <td class="rate">40% <span class="arrow">→</span> 37.5%</td>
+          <td>「バランスある税体系」の構築</td>
+          <td><span class="badge b-shohi">消費税導入（3%）と抱き合わせ</span></td>
+        </tr>
+        <tr>
+          <td>1998</td>
+          <td class="rate">37.5% <span class="arrow">→</span> 34.5%</td>
+          <td>景気対策</td>
+          <td><span class="badge b-kokuai">国債増発・財源論なし</span></td>
+        </tr>
+        <tr>
+          <td>1999</td>
+          <td class="rate">34.5% <span class="arrow">→</span> 30%</td>
+          <td>恒久的景気対策</td>
+          <td><span class="badge b-kokuai">国債増発・財源論なし</span></td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td class="rate">30% <span class="arrow">→</span> 25.5%</td>
+          <td>成長戦略・国内投資促進</td>
+          <td><span class="badge b-kazei">課税ベース拡大（名目）＋国債</span></td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td class="rate">25.5% <span class="arrow">→</span> 23.2%</td>
+          <td>国際競争力・成長志向</td>
+          <td><span class="badge b-kazei">課税ベース拡大（名目）＋国債</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">「課税ベース拡大により財源を確保」は財務省の公式説明だが、法人税収は実効税率引き下げとほぼ連動して減少。実質的な財源補填は国債増発が中心。</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section">
+    <div class="section-label">所得税　最高税率の引き下げ</div>
+    <table>
+      <thead>
+        <tr>
+          <th>年</th>
+          <th>税率の変化</th>
+          <th>名目上の根拠</th>
+          <th>実際の財源・補填</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1989</td>
+          <td class="rate">88% <span class="arrow">→</span> 65%<br><span style="font-size:11px;color:var(--color-text-tertiary)">（国税＋住民税）</span></td>
+          <td>累進緩和・中所得者減税</td>
+          <td><span class="badge b-shohi">消費税導入（3%）と抱き合わせ</span></td>
+        </tr>
+        <tr>
+          <td>1995</td>
+          <td class="rate">65% <span class="arrow">→</span> 60%</td>
+          <td>消費税増税への先行減税</td>
+          <td><span class="badge b-shohi">消費税5%引き上げ（1997年）と抱き合わせ</span></td>
+        </tr>
+        <tr>
+          <td>1999</td>
+          <td class="rate">65% <span class="arrow">→</span> 50%<br><span style="font-size:11px;color:var(--color-text-tertiary)">（国税のみ）</span></td>
+          <td>恒久的景気対策</td>
+          <td><span class="badge b-kokuai">国債増発・財源論なし</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">1989年・1995年の所得税減税はいずれも消費税の導入・引き上げと同時立法。「所得税を下げる代わりに消費税を取る」という構造が明確に存在する。</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section">
+    <div class="section-label">消費税　税率の変遷</div>
+    <table>
+      <thead>
+        <tr>
+          <th>年</th>
+          <th>税率の変化</th>
+          <th>名目上の根拠</th>
+          <th>実際の財源・役割</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1989</td>
+          <td class="rate">0% <span class="arrow">→</span> 3%</td>
+          <td>「バランスある税体系」</td>
+          <td><span class="badge b-shohi">法人税・所得税減税の穴埋め</span></td>
+        </tr>
+        <tr>
+          <td>1997</td>
+          <td class="rate">3% <span class="arrow">→</span> 5%</td>
+          <td>財政再建・社会保障</td>
+          <td><span class="badge b-shohi">所得税減税の代替財源</span></td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td class="rate">5% <span class="arrow">→</span> 8%</td>
+          <td>社会保障の安定財源</td>
+          <td><span class="badge b-shakai">社会保障財源として明記</span></td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td class="rate">8% <span class="arrow">→</span> 10%</td>
+          <td>社会保障の安定財源</td>
+          <td><span class="badge b-shakai">社会保障財源として明記</span></td>
+        </tr>
+        <tr class="highlight-row">
+          <td colspan="4" style="padding: 12px 10px;">
+            <span style="font-size:13px; font-weight:500; color:#A32D2D;">消費税「減税」を提案すると → 必ず「財源は何ですか？」と問われる</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section">
+    <div class="section-label">構造的非対称のまとめ</div>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">政策</th>
+          <th>財源論の有無</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>法人税を下げる</td>
+          <td style="font-size:12px;color:var(--color-text-secondary)">「国際競争力」「景気対策」</td>
+          <td><span class="badge b-none">財源論なし</span></td>
+        </tr>
+        <tr>
+          <td>所得税を下げる</td>
+          <td style="font-size:12px;color:var(--color-text-secondary)">「景気対策」「中所得者減税」</td>
+          <td><span class="badge b-none">財源論なし</span></td>
+        </tr>
+        <tr>
+          <td>消費税を上げる</td>
+          <td style="font-size:12px;color:var(--color-text-secondary)">他の減税の「財源」として使われる</td>
+          <td><span class="badge b-shohi">財源として機能する側</span></td>
+        </tr>
+        <tr class="highlight-row">
+          <td>消費税を下げる</td>
+          <td style="font-size:12px;color:var(--color-text-secondary)">国民の可処分所得向上・内需拡大</td>
+          <td><span class="badge b-none">「財源は？」と必ず問われる</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="source">
+    出典：財務省「日本の税の歴史」／全商連「法人税減税累計試算」／参議院常任委員会調査室（2019）／ニッセイ基礎研究所「財源がないは本当か」（2024）ほか
+  </div>
+</div>
