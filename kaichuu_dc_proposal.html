@@ -1,0 +1,726 @@
+---
+layout: default
+title: 日本海の底に沈めろ——次世代データセンター構想｜国まもりプロジェクト
+---
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本海の底に沈めろ——次世代データセンター構想｜国まもりプロジェクト</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --bg: #F7F4EF;
+    --paper: #FDFAF5;
+    --accent: #1a5276;
+    --accent-light: #e8f4f8;
+    --accent2: #7d6608;
+    --accent2-light: #fef9e7;
+    --accent3: #1a6b40;
+    --accent3-light: #e9f7ef;
+    --rule: #D8D0C4;
+    --muted: #7a7060;
+    --danger-bg: #fdf0f0;
+    --danger-border: #e8b4b4;
+    --danger-text: #7b1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.9;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+    background: var(--paper);
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.06);
+  }
+
+  /* ── ヘッダー ── */
+  .doc-header {
+    margin-bottom: 52px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    margin-bottom: 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .doc-meta span::before { content: '｜'; margin-right: 0; }
+  .doc-meta span:first-child::before { content: ''; }
+
+  h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    border-left: 3px solid var(--rule);
+    padding-left: 14px;
+    margin-top: 18px;
+  }
+
+  /* ── セクション ── */
+  .section { margin-bottom: 44px; }
+
+  h2 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2 .sec-num {
+    font-size: 10px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.95;
+    color: #2a2a2a;
+    margin-bottom: 14px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── callout ── */
+  .callout {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 22px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout p {
+    font-size: 14px;
+    color: var(--accent);
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+
+  .callout-amber {
+    background: var(--accent2-light);
+    border-left-color: #b8860b;
+  }
+  .callout-amber p { color: var(--accent2); }
+
+  .callout-green {
+    background: var(--accent3-light);
+    border-left-color: #1a6b40;
+  }
+  .callout-green p { color: var(--accent3); }
+
+  /* ── 問いボックス ── */
+  .question-box {
+    background: #f8f5e8;
+    border: 1px solid #d4c97a;
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .question-box .q-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7a6600;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .question-box p {
+    font-size: 14px;
+    margin: 0;
+    color: #4a3d00;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+
+  /* ── 対比表 ── */
+  .contrast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    font-size: 13.5px;
+  }
+  .contrast-table th {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    padding: 8px 14px;
+    text-align: left;
+    border-bottom: 1.5px solid var(--ink);
+    color: var(--muted);
+  }
+  .contrast-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.7;
+    color: #2a2a2a;
+  }
+  .contrast-table tr:last-child td { border-bottom: none; }
+  .contrast-table .col-prob { color: var(--danger-text); }
+  .contrast-table .col-sol  { color: var(--accent3); font-weight: 500; }
+  .contrast-table .col-arrow { text-align: center; color: var(--muted); width: 28px; }
+
+  /* ── 深度バー ── */
+  .depth-section { margin: 22px 0; }
+  .depth-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .depth-label {
+    min-width: 110px;
+    color: var(--muted);
+    text-align: right;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .depth-bar {
+    height: 22px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .depth-note {
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  /* ── 電源レイヤー ── */
+  .layer-list { margin: 20px 0; display: flex; flex-direction: column; gap: 4px; }
+  .layer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 16px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+  .layer-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .layer-body {}
+  .layer-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: var(--ink);
+  }
+  .layer-note { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+  .layer-wind  { background: #eaf4fc; border-color: #aed6f1; }
+  .layer-tidal { background: #fef9e7; border-color: #f9e79f; }
+  .layer-dc    { background: #eaf7ef; border-color: #a9dfbf; }
+  .layer-cool  { background: #e8eaf6; border-color: #b2bce8; }
+  .layer-multi { background: #f5f0eb; border-color: #d5c9bc; }
+
+  /* ── ステークホルダー表 ── */
+  .stake-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 20px 0;
+  }
+  .stake-table th {
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 7px 12px;
+    border-bottom: 1.5px solid var(--ink);
+    text-align: left;
+  }
+  .stake-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.7;
+    color: #2a2a2a;
+  }
+  .stake-table tr:last-child td { border-bottom: none; }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .tag-key    { background: #fdebd0; color: #784212; border: 1px solid #f0b27a; }
+  .tag-org    { background: #eaf4fb; color: #1a4e6b; border: 1px solid #85c1e9; }
+  .tag-push   { background: #eaf7ef; color: #1a5e30; border: 1px solid #82e0aa; }
+
+  /* ── 数値カード ── */
+  .stat-row { display: flex; gap: 12px; margin: 20px 0; flex-wrap: wrap; }
+  .stat-card {
+    flex: 1;
+    min-width: 130px;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 6px; font-weight: 500; }
+  .stat-val   { font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 4px; }
+  .stat-sub   { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+  .stat-card.hl { border-color: #82c9a5; }
+  .stat-card.hl .stat-val { color: var(--accent3); }
+
+  /* ── 注釈 ── */
+  .note {
+    background: var(--danger-bg);
+    border: 1px solid var(--danger-border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 22px 0;
+  }
+  .note .note-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #8b2020;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .note p {
+    font-size: 13.5px;
+    color: var(--danger-text);
+    margin: 0;
+    line-height: 1.8;
+  }
+
+  /* ── 締め問い ── */
+  .closing {
+    margin-top: 52px;
+    padding: 28px 28px 24px;
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    background: #f9f6f0;
+  }
+  .closing-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .closing p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15.5px;
+    font-weight: 400;
+    line-height: 2;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .closing p:last-child { margin-bottom: 0; }
+
+  /* ── フッター ── */
+  .doc-footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .doc-footer span {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 44px 22px 60px; }
+    h1 { font-size: 22px; }
+    .stat-row { flex-direction: column; }
+    .depth-label { min-width: 80px; font-size: 11px; }
+    .contrast-table th, .contrast-table td { padding: 8px 8px; font-size: 12.5px; }
+  }
+</style>
+</head>
+
+<div class="page">
+
+  <header class="doc-header">
+    <div class="doc-meta">
+      <span>国まもりプロジェクト</span>
+      <span>インフラ構想</span>
+      <span>エネルギー・デジタル安保</span>
+    </div>
+    <h1>日本海の底に沈めろ<br>——次世代データセンター構想</h1>
+    <p class="subtitle">
+      冷却・電力・安保・地方創生——すべての問いへの答えが、日本海固有水の中にある。<br>
+      洋上風力 ＋ 潮流発電 ＋ 海中データセンターの複合プラットフォーム構想。
+    </p>
+  </header>
+
+
+  <!-- 1. なぜ今か -->
+  <div class="section">
+    <h2><span class="sec-num">序</span>AI時代が「電力と熱」の問題を可視化した</h2>
+    <p>
+      大規模言語モデルの推論処理は、従来のウェブサーバーとはケタ違いの熱を発生させる。
+      データセンターの消費電力のうち、約40%が冷却に費やされているとも言われ、
+      立地競争は「土地が安いか」より「冷たい水と安い電力があるか」に移行しつつある。
+    </p>
+    <p>
+      中国はすでに動いた。2026年5月、東シナ海の水深10メートルに約2,000台のサーバーを沈め、
+      洋上風力と直結した海中データセンターがフル商用運転を開始した。
+      近隣の洋上風力タービン50基以上から電力の95%を調達し、
+      ネットワーク遅延は0.5ミリ秒——実質的に知覚できないレベルだ。
+    </p>
+    <div class="callout">
+      <p>かつて来島海峡で世界初の潮力発電に成功した国が、40年後も実用化できていない。技術の問題ではなく、発想の問題だ。</p>
+    </div>
+  </div>
+
+
+  <!-- 2. 問題の構造 -->
+  <div class="section">
+    <h2><span class="sec-num">01</span>陸上データセンターが抱える構造的限界</h2>
+    <p>
+      問題は冷却コストだけではない。電力グリッドへの依存、用地確保の困難、
+      そして外国クラウドへのデータ主権流出——複数の問題が同一の根を持っている。
+    </p>
+
+    <table class="contrast-table">
+      <thead>
+        <tr>
+          <th>陸上モデルの問題</th>
+          <th class="col-arrow"></th>
+          <th>海中モデルの応答</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-prob">電力コストの約4割が冷却に消える</td>
+          <td class="col-arrow">→</td>
+          <td class="col-sol">海水（0〜1℃）で自然冷却、空調コストほぼゼロ</td>
+        </tr>
+        <tr>
+          <td class="col-prob">電力グリッド依存、送電ロス大</td>
+          <td class="col-arrow">→</td>
+          <td class="col-sol">発電設備と直結、送電ケーブル最短でロスほぼゼロ</td>
+        </tr>
+        <tr>
+          <td class="col-prob">用地・騒音・景観問題で立地難</td>
+          <td class="col-arrow">→</td>
+          <td class="col-sol">海底設置で見えない、聞こえない</td>
+        </tr>
+        <tr>
+          <td class="col-prob">外国クラウドへのデータ主権流出</td>
+          <td class="col-arrow">→</td>
+          <td class="col-sol">日本の内海に物理的に設置、主権確保</td>
+        </tr>
+        <tr>
+          <td class="col-prob">洋上風力単独では採算が厳しい</td>
+          <td class="col-arrow">→</td>
+          <td class="col-sol">データセンターとバンドルし収益モデルを転換</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 3. なぜ日本海か -->
+  <div class="section">
+    <h2><span class="sec-num">02</span>日本海固有水という天然の冷却装置</h2>
+    <p>
+      日本海は、アジア大陸と日本列島に囲まれた閉鎖性の高い縁海だ。
+      対馬海峡・津軽海峡・宗谷海峡の水深はいずれも200m以浅で、
+      外洋との海水交換は表層に限られる。
+    </p>
+    <p>
+      この閉鎖性が、深層に驚くべき安定をもたらした。
+      水深300メートルを超える領域——日本海全体の体積の8割以上——は
+      「日本海固有水」と呼ばれる水温0〜1℃、塩分34.1のほぼ均質な水塊で満たされている。
+      季節も気象も関係なく、年間を通じてほぼ一定だ。
+    </p>
+
+    <div class="depth-section">
+      <div class="depth-row">
+        <div class="depth-label">表層 0〜200m</div>
+        <div class="depth-bar" style="width:32%;background:#2980b9;">11〜27℃　漁場・対馬暖流域</div>
+        <div class="depth-note"></div>
+      </div>
+      <div class="depth-row">
+        <div class="depth-label">中深層 〜300m</div>
+        <div class="depth-bar" style="width:18%;background:#1a5276;">急低下帯</div>
+        <div class="depth-note">取水候補</div>
+      </div>
+      <div class="depth-row">
+        <div class="depth-label">深層 300m〜</div>
+        <div class="depth-bar" style="width:78%;background:#0d2f4a;font-size:11px;">0〜1℃ 年中一定　日本海固有水（全体積の8割以上）</div>
+        <div class="depth-note"></div>
+      </div>
+      <div class="depth-row">
+        <div class="depth-label">日本海盆</div>
+        <div class="depth-bar" style="width:60%;background:#061a2b;font-size:11px;">最深 約3,800m</div>
+        <div class="depth-note">大和堆を囲む三海盆</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>瀬戸内海の平均水深が約38mであるのに対し、日本海は最深部3,800m超。表層の漁業権と深層の冷水を分離して考えられるのが日本海の大きなアドバンテージだ。</p>
+    </div>
+  </div>
+
+
+  <!-- 4. 電力設計 -->
+  <div class="section">
+    <h2><span class="sec-num">03</span>洋上風力 ＋ 潮流発電の相補構造</h2>
+    <p>
+      データセンターが電源に求めるのは、安さより「止まらないこと」だ。
+      太陽光も風力も、天候に左右される変動電源である以上、単独では要件を満たせない。
+      ここに潮流発電の本質的な優位がある。
+    </p>
+    <p>
+      潮流は月と太陽の引力に由来する。数十年先の発電量が計算できる。
+      台風が来ても、曇天が続いても、変わらず流れ続ける。
+      この「予測可能なベース電源」と洋上風力の「大出力変動電源」を組み合わせることで、
+      はじめてデータセンターの無停電要件に対応できる再エネ構成が生まれる。
+    </p>
+
+    <div class="layer-list">
+      <div class="layer-item layer-wind">
+        <div class="layer-icon">🌬</div>
+        <div class="layer-body">
+          <div class="layer-name">洋上風力（変動電源・大出力）</div>
+          <div class="layer-note">青森・山形・秋田・新潟沖で計画進行中。2030年商業運転を目標とする区域が複数。三菱商事撤退後の再公募も進んでいる。単独の系統売電では採算が課題。</div>
+        </div>
+      </div>
+      <div class="layer-item layer-tidal">
+        <div class="layer-icon">🌊</div>
+        <div class="layer-body">
+          <div class="layer-name">潮流発電（ベース電源・安定供給）</div>
+          <div class="layer-note">九電みらいエナジーが2030年度の国内初商用化を目標。津軽海峡・対馬海峡・奈留瀬戸（五島列島）が有望候補地。流速1m/秒以上の海域が対象。</div>
+        </div>
+      </div>
+      <div class="layer-item layer-dc">
+        <div class="layer-icon">🖥</div>
+        <div class="layer-body">
+          <div class="layer-name">海中データセンター（確実な需要）</div>
+          <div class="layer-note">電力と冷却を内製化。発電設備と同一海域に設置することで送電ロスをほぼゼロに抑える。「系統に売る」のではなく「自分で使う」モデルへの転換。</div>
+        </div>
+      </div>
+      <div class="layer-item layer-cool">
+        <div class="layer-icon">❄️</div>
+        <div class="layer-body">
+          <div class="layer-name">日本海固有水（天然冷却源）</div>
+          <div class="layer-note">300m以深で0〜1℃、年間を通じてほぼ一定。取水・循環システムで空調エネルギーをほぼゼロに近づけられる。中国の東シナ海モデルには存在しない日本固有の優位。</div>
+        </div>
+      </div>
+      <div class="layer-item layer-multi">
+        <div class="layer-icon">⚓</div>
+        <div class="layer-body">
+          <div class="layer-name">複合プラットフォーム（地域共生）</div>
+          <div class="layer-note">灯台機能・漁船給油・氷供給・気象観測・AIS中継を同一構造物に組み込む。海上保安庁のコスト削減と地域漁業の利便性向上を同時に実現。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 5. コスト論理の転換 -->
+  <div class="section">
+    <h2><span class="sec-num">04</span>「電力を売る」から「電力と冷却を内製する」へ</h2>
+    <p>
+      潮流発電がなぜ40年間も実用化されないのか。
+      コスト試算を見ると答えが見えてくる。
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-label">潮流発電コスト（試算）</div>
+        <div class="stat-val">23〜32円</div>
+        <div class="stat-sub">/ kWh（NEDO試算・2014年）<br>一般系統電力との競合は困難</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">一般商用電力（参考）</div>
+        <div class="stat-val">約12〜18円</div>
+        <div class="stat-sub">/ kWh（産業用・2024年前後）<br>系統売電では勝ち目がない</div>
+      </div>
+      <div class="stat-card hl">
+        <div class="stat-label">バンドルモデルの優位</div>
+        <div class="stat-val">送電ロス≒0</div>
+        <div class="stat-sub">＋冷却コスト削減<br>＋安定供給プレミアム<br>採算の論理が根本から変わる</div>
+      </div>
+    </div>
+
+    <p>
+      「電力を系統に売る」という単一モデルの中では、23〜32円/kWhは競争力のない数字だ。
+      しかし視点を変えれば話が違う。
+      データセンターの冷却コスト削減効果を加算し、
+      送電ロスをほぼゼロにし、
+      停電リスクのない安定電源としてのプレミアムを乗せる——
+      そのとき、潮流発電の「高さ」は弱点ではなく、
+      安定供給コストとして正当化される数字に転化する。
+    </p>
+
+    <div class="callout-amber callout">
+      <p>需要を先に作り、そこに電源と冷却をセットで供給する。需要創出型の発想への転換がなければ、日本の潮流発電はこれから40年後も「実証段階」のままだろう。</p>
+    </div>
+  </div>
+
+
+  <!-- 6. ステークホルダー -->
+  <div class="section">
+    <h2><span class="sec-num">05</span>反対勢力をゼロにする「全員得をする」設計</h2>
+    <p>
+      洋上・海中インフラが実現しない最大の理由は、技術でも予算でもなく、
+      利害関係者の調整だ。漁業権、環境規制、防衛上の懸念——
+      これらを一つひとつ潰していくのではなく、
+      最初から全員が得をする構造を設計することが問題の本質的な解決になる。
+    </p>
+
+    <table class="stake-table">
+      <thead>
+        <tr><th>関係者</th><th>得られるもの</th><th>分類</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>漁業者・漁協</td>
+          <td>沖合の氷・燃料・避難拠点の確保。深層設置のため漁場への影響なし。</td>
+          <td><span class="tag tag-key">最重要</span></td>
+        </tr>
+        <tr>
+          <td>海上保安庁</td>
+          <td>灯台・AIS・気象センサーのコスト削減と機能強化。</td>
+          <td><span class="tag tag-org">協力機関</span></td>
+        </tr>
+        <tr>
+          <td>防衛省・自衛隊</td>
+          <td>海洋監視センサーを自然な形で組み込める。北方・対馬ライン警戒に活用。</td>
+          <td><span class="tag tag-org">協力機関</span></td>
+        </tr>
+        <tr>
+          <td>日本海沿岸自治体</td>
+          <td>雇用・税収・デジタルインフラ。過疎対策・離島振興と連動。</td>
+          <td><span class="tag tag-push">推進力</span></td>
+        </tr>
+        <tr>
+          <td>IT・クラウド企業</td>
+          <td>グリーン電力証書、冷却コスト削減、国内データ主権の確保。</td>
+          <td><span class="tag tag-push">需要主体</span></td>
+        </tr>
+        <tr>
+          <td>エネルギー会社</td>
+          <td>洋上風力の採算改善。潮流発電の早期商用化への足がかり。</td>
+          <td><span class="tag tag-push">推進力</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 7. リスク -->
+  <div class="section">
+    <h2><span class="sec-num">06</span>見えている課題を直視する</h2>
+    <p>
+      この構想の課題は、技術より「人と制度」の問題として存在する。
+      以下は確認済みの論点であり、構想を否定するものではなく、
+      設計に最初から組み込まれるべき要素として列挙する。
+    </p>
+
+    <div class="note">
+      <span class="note-label">⚠ 環境リスク</span>
+      <p>日本海は閉鎖性が高いため、廃熱が深層に蓄積した場合の逃げ場が少ない。2022年の論文では、海洋熱波によって水中の酸素濃度が低下し海洋生物を窒息させる可能性も指摘されている。20〜30年スパンの海洋環境モニタリング体制の設計が不可欠だ。</p>
+    </div>
+
+    <p>
+      他にも、メンテナンス船の季節運航制限、台風・荒天時の対応、
+      藤壺・牡蠣などの付着生物問題、有事における海底ケーブル保護——
+      Microsoftが「Project Natick」を終了したのも、
+      「技術的に失敗したから」ではなく「商用展開モデルとして採用しなかった」からだ。
+      学ぶべきは、実証の知見をいかに商用モデルに接続するかという設計の問題だ。
+    </p>
+
+    <div class="callout">
+      <p>Microsoftの実験では、水中サーバー855台中の故障は6台。陸上の135台中8台という数字より明らかに低い。海中は「故障しやすい環境」ではなく「故障しにくい環境」だった。</p>
+    </div>
+  </div>
+
+
+  <!-- 締め -->
+  <div class="closing">
+    <span class="closing-label">問い</span>
+    <p>
+      1980年代、日本大学のグループは来島海峡で世界初の潮力発電に成功した。
+      その後40年、日本はなぜ実用化できなかったのか。
+    </p>
+    <p>
+      答えは技術の問題ではない。
+      「電力を系統に売る」という単一モデルしか描いてこなかったからだ。
+    </p>
+    <p>
+      中国が2026年に商用運転を開始した海中データセンターは、
+      電力販売ではなく電力の自己消費モデルで動いている。
+      日本海固有水という、中国が持ち得ない天然の冷却装置を抱えながら、
+      日本がこの発想の転換に至っていないとすれば——
+      それは技術立国の看板が問われる問題ではないか。
+    </p>
+  </div>
+
+
+  <footer class="doc-footer">
+    <span>国まもりプロジェクト — インフラ構想</span>
+    <span>2026</span>
+  </footer>
+
+</div>
