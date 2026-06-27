@@ -8,3 +8,6 @@ defaults:
       type: "pages"   # ページ種別（HTMLファイル）
     values:
       layout: "default"  # _layouts/default.html を使う
+      
+include:
+  - .well-known
