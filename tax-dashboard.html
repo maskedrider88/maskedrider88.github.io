@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>納税ダッシュボード — 国まもりプロジェクト</title>
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-soft: #7a7a74;
+    --paper: #f7f6f2;
+    --paper-mid: #eeecea;
+    --accent: #2a5c8a;
+    --accent-soft: #e8f0f7;
+    --warn: #c45c2a;
+    --warn-soft: #faf0eb;
+    --border: rgba(26,26,24,0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* ヘッダー */
+  .site-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .site-header .logo {
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+  .site-header .sep { color: var(--border); }
+
+  /* メインレイアウト */
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  /* 冒頭セクション */
+  .hero {
+    margin-bottom: 3rem;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-lead {
+    font-size: 17px;
+    color: var(--ink-mid);
+    line-height: 1.9;
+  }
+
+  /* モックアップエリア */
+  .mockup-wrapper {
+    margin: 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mockup-caption {
+    font-size: 13px;
+    color: var(--warn);
+    letter-spacing: 0.04em;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* スマホフレーム */
+  .phone-frame {
+    width: 280px;
+    background: #1a1a1a;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.12);
+    position: relative;
+  }
+  .phone-notch {
+    width: 80px;
+    height: 22px;
+    background: #1a1a1a;
+    border-radius: 0 0 14px 14px;
+    margin: 0 auto 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .phone-screen {
+    background: #f5f5f7;
+    border-radius: 26px;
+    overflow: hidden;
+    min-height: 520px;
+  }
+
+  /* アプリUI */
+  .app-header {
+    background: var(--accent);
+    padding: 14px 16px 16px;
+    color: white;
+  }
+  .app-header-label {
+    font-size: 10px;
+    opacity: 0.75;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+  }
+  .app-header-title {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .app-header-sub {
+    font-size: 10px;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  .app-body {
+    padding: 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* 総額カード */
+  .total-card {
+    background: white;
+    border-radius: 10px;
+    padding: 14px;
+    border: 0.5px solid rgba(0,0,0,0.08);
+  }
+  .total-card-label {
+    font-size: 9px;
+    color: #888;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .total-card-amount {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .total-card-amount span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #888;
+    margin-left: 2px;
+  }
+  .total-card-sub {
+    font-size: 9px;
+    color: #888;
+    margin-top: 6px;
+  }
+  .total-card-sub strong {
+    color: #c45c2a;
+  }
+
+  /* 内訳リスト */
+  .breakdown-card {
+    background: white;
+    border-radius: 10px;
+    border: 0.5px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .breakdown-header {
+    padding: 10px 12px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.08em;
+    border-bottom: 0.5px solid rgba(0,0,0,0.06);
+  }
+  .breakdown-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    border-bottom: 0.5px solid rgba(0,0,0,0.05);
+    gap: 8px;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .breakdown-name {
+    font-size: 9px;
+    color: #444;
+  }
+  .breakdown-bar-track {
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .breakdown-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+  .breakdown-bar-fill.warn { background: #c45c2a; }
+  .breakdown-bar-fill.mid { background: #5a8ab0; }
+  .breakdown-amount {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a1a1a;
+    white-space: nowrap;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  /* 使途カード */
+  .usage-card {
+    background: white;
+    border-radius: 10px;
+    border: 0.5px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .usage-header {
+    padding: 10px 12px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.08em;
+    border-bottom: 0.5px solid rgba(0,0,0,0.06);
+  }
+  .usage-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px;
+    border-bottom: 0.5px solid rgba(0,0,0,0.05);
+  }
+  .usage-row:last-child { border-bottom: none; }
+  .usage-name { font-size: 9px; color: #444; }
+  .usage-pct {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* 地域カード（ハイライト） */
+  .local-card {
+    background: #fff8f5;
+    border-radius: 10px;
+    border: 0.5px solid rgba(196,92,42,0.2);
+    overflow: hidden;
+  }
+  .local-header {
+    padding: 10px 12px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #c45c2a;
+    letter-spacing: 0.08em;
+    border-bottom: 0.5px solid rgba(196,92,42,0.12);
+  }
+  .local-body {
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .local-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .local-stat-label { font-size: 9px; color: #666; }
+  .local-stat-value {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .local-stat-value.low { color: #c45c2a; }
+  .local-stat-value.ok { color: #2a5c8a; }
+  .local-note {
+    font-size: 8px;
+    color: #999;
+    line-height: 1.5;
+    padding-top: 4px;
+    border-top: 0.5px solid rgba(196,92,42,0.1);
+  }
+
+  /* 本文 */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .section p {
+    color: var(--ink-mid);
+    margin-bottom: 1rem;
+  }
+  .section p:last-child { margin-bottom: 0; }
+
+  /* 項目リスト */
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  .item-group-label {
+    background: var(--paper-mid);
+    padding: 0.5rem 1rem;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    letter-spacing: 0.08em;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 0.5px solid var(--border);
+    background: white;
+  }
+  .item-row:last-child { border-bottom: none; }
+  .item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .item-dot.warn { background: var(--warn); }
+  .item-content {}
+  .item-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .item-desc {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* 注釈ボックス */
+  .note-box {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  .warn-box {
+    background: var(--warn-soft);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+  }
+
+  /* 締め */
+  .closing {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 2;
+  }
+
+  /* フッター */
+  .article-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 12px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 2rem 1rem 4rem; }
+    .phone-frame { width: 240px; }
+    .total-card-amount { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">国まもりプロジェクト</span>
+  <span class="sep">／</span>
+  <span class="logo">資料室</span>
+</header>
+
+<main class="container">
+
+  <!-- 冒頭 -->
+  <div class="hero">
+    <p class="hero-eyebrow">税制・地方財政</p>
+    <h1 class="hero-title">納税ダッシュボードは<br>なぜ存在しないのか</h1>
+    <p class="hero-lead">
+      技術的な障壁はない。データはすでにある。番号も振られている。
+      それでも、あなたが年間いくら、何の名目で納めているかを
+      一画面で確認できる仕組みは、今もどこにも存在しない。
+    </p>
+  </div>
+
+  <!-- モックアップ -->
+  <div class="mockup-wrapper">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="app-header">
+          <div class="app-header-label">MY TAX PORTAL</div>
+          <div class="app-header-title">あなたの納税サマリー</div>
+          <div class="app-header-sub">2024年度 ／ モデルケース：30代・会社員・京都府</div>
+        </div>
+        <div class="app-body">
+
+          <!-- 総額 -->
+          <div class="total-card">
+            <div class="total-card-label">TODAY'S TOTAL — 今年の総負担額</div>
+            <div class="total-card-amount">142<span>万円</span></div>
+            <div class="total-card-sub">
+              手取りに対する実質負担率 <strong>約44%</strong>
+            </div>
+          </div>
+
+          <!-- 内訳 -->
+          <div class="breakdown-card">
+            <div class="breakdown-header">内訳</div>
+            <div class="breakdown-row">
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-name">所得税</div>
+                <div class="breakdown-bar-track"><div class="breakdown-bar-fill" style="width:28%"></div></div>
+              </div>
+              <div class="breakdown-amount">24万円</div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-name">住民税</div>
+                <div class="breakdown-bar-track"><div class="breakdown-bar-fill mid" style="width:22%"></div></div>
+              </div>
+              <div class="breakdown-amount">18万円</div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-name">社会保険料（年金・健保・介護・雇用）</div>
+                <div class="breakdown-bar-track"><div class="breakdown-bar-fill" style="width:68%"></div></div>
+              </div>
+              <div class="breakdown-amount">72万円</div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-name">消費税（推計）</div>
+                <div class="breakdown-bar-track"><div class="breakdown-bar-fill mid" style="width:18%"></div></div>
+              </div>
+              <div class="breakdown-amount">18万円</div>
+            </div>
+            <div class="breakdown-row">
+              <div class="breakdown-bar-wrap">
+                <div class="breakdown-name">その他（固定資産税・自動車税等）</div>
+                <div class="breakdown-bar-track"><div class="breakdown-bar-fill mid" style="width:12%"></div></div>
+              </div>
+              <div class="breakdown-amount">10万円</div>
+            </div>
+          </div>
+
+          <!-- 使途 -->
+          <div class="usage-card">
+            <div class="usage-header">推計使途</div>
+            <div class="usage-row">
+              <div class="usage-name">社会保障（年金・医療・介護）</div>
+              <div class="usage-pct">38%</div>
+            </div>
+            <div class="usage-row">
+              <div class="usage-name">国債償還</div>
+              <div class="usage-pct">24%</div>
+            </div>
+            <div class="usage-row">
+              <div class="usage-name">公共事業・教育・防衛等</div>
+              <div class="usage-pct">26%</div>
+            </div>
+            <div class="usage-row">
+              <div class="usage-name">地方への交付金</div>
+              <div class="usage-pct">12%</div>
+            </div>
+          </div>
+
+          <!-- 地域還元（ハイライト） -->
+          <div class="local-card">
+            <div class="local-header">地域との関係</div>
+            <div class="local-body">
+              <div class="local-stat">
+                <div class="local-stat-label">あなたの税金のうち地元に残る推計</div>
+                <div class="local-stat-value low">約17万円</div>
+              </div>
+              <div class="local-stat">
+                <div class="local-stat-label">地元還元率</div>
+                <div class="local-stat-value low">12%</div>
+              </div>
+              <div class="local-stat">
+                <div class="local-stat-label">居住地の交付税依存度</div>
+                <div class="local-stat-value ok">34%</div>
+              </div>
+              <div class="local-note">
+                納めた税の大部分は中央で配分が決定されます。地元への還元額・使途は国が定める基準に基づきます。
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="mockup-caption">これはまだ存在しません。</p>
+  </div>
+
+  <!-- 本文 -->
+  <div class="section">
+    <h2 class="section-title">技術的には、今日にでも作れる</h2>
+    <p>
+      マイナンバーはすでに全国民に付番されている。
+      所得税・住民税のデータは税務署と自治体が持っている。
+      社会保険料は年金機構・健保組合が管理している。
+      固定資産税・自動車税は各自治体が把握している。
+    </p>
+    <p>
+      これらを番号で名寄せし、一画面に集約する——
+      それだけのことだ。新しいインフラは何も要らない。
+      既存のデータを、既存の番号で、つなぐだけである。
+    </p>
+    <div class="note-box">
+      マイナポータルは今、何ができるか。医療費通知の閲覧、確定申告との連携、行政手続きのオンライン申請——いずれも「国が国民を管理する」方向への活用だ。「国民が自分の情報を自分で見る」という逆方向の設計は、いまだ存在しない。
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">ダッシュボードに並ぶべき項目</h2>
+    <p>仮にこのシステムが実現したとして、何が見えるべきか。</p>
+
+    <div class="item-list">
+      <div class="item-group-label">払った額</div>
+      <div class="item-row">
+        <div class="item-dot"></div>
+        <div class="item-content">
+          <div class="item-name">今年度の納税総額・内訳</div>
+          <div class="item-desc">所得税・住民税・社会保険料（年金・健康・介護・雇用）・消費税推計・固定資産税・自動車税等</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot"></div>
+        <div class="item-content">
+          <div class="item-name">手取りに対する実質負担率</div>
+          <div class="item-desc">給与明細の「手取り」と「総支給」の差だけでは見えない、社会保険料の企業負担分を含めた真の負担率</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot"></div>
+        <div class="item-content">
+          <div class="item-name">生涯累計納税額</div>
+          <div class="item-desc">就労開始から現在までの累計。年金受給前後での収支比較にも使える</div>
+        </div>
+      </div>
+
+      <div class="item-group-label">使途</div>
+      <div class="item-row">
+        <div class="item-dot"></div>
+        <div class="item-content">
+          <div class="item-name">推計使途の内訳</div>
+          <div class="item-desc">社会保障・国債償還・公共事業・防衛・教育等、自分の税金が何に使われているかの概算配分</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot"></div>
+        <div class="item-content">
+          <div class="item-name">受益との比較</div>
+          <div class="item-desc">自分が受け取った社会保障給付の累計（医療費・年金等）と、払った保険料との収支バランス</div>
+        </div>
+      </div>
+
+      <div class="item-group-label">地域との関係</div>
+      <div class="item-row">
+        <div class="item-dot warn"></div>
+        <div class="item-content">
+          <div class="item-name">地元還元率</div>
+          <div class="item-desc">自分が納めた税のうち、居住地域の行政サービスに還元された推計額とその割合</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot warn"></div>
+        <div class="item-content">
+          <div class="item-name">居住地の地方交付税依存度</div>
+          <div class="item-desc">地元自治体の財源のうち、国からの交付金に依存している割合。数字が高いほど中央の裁量が大きい</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-dot warn"></div>
+        <div class="item-content">
+          <div class="item-name">地域間の負担格差</div>
+          <div class="item-desc">同じ所得水準でも、居住地域によって受けられる行政サービスの差がどれほどあるか</div>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      特に「地元還元率」と「地方交付税依存度」の二つが並んだ時、何かが見えてくるだろう。
+      納めた税の多くが中央に集まり、使途と配分の決定権も中央にある。
+      地元に戻ってくる分は、中央が定めた基準に従った形でしか届かない。
+    </p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">なぜ見えないように設計されているのか</h2>
+    <p>
+      源泉徴収は、給与から自動的に天引きされる仕組みだ。
+      毎月少しずつ引かれるから、年間の総額を意識する機会がほとんどない。
+      社会保険料も同様に、給与明細に記載はあっても「会社が払う分」という感覚が残る。
+      しかし経済的には、その分は本来労働者が受け取るべき賃金から出ている。
+    </p>
+    <p>
+      消費税は一回の支払いが小さい。
+      しかし年間の買い物を積み上げれば、相当な額になる。
+      少額に分散することで、痛みを感じさせない設計になっている。
+    </p>
+    <div class="warn-box">
+      マイナンバーは徴税効率の向上には積極的に活用されてきた。
+      給付の重複排除や、申告漏れの把握にも使われている。
+      しかし納税者が「自分はいくら払ったか」を確認できる仕組みへの活用は、いまだ手つかずのままだ。
+    </div>
+    <p>
+      技術的な問題ではない。政治的な問題だ。
+    </p>
+  </div>
+
+  <!-- 締め -->
+  <div class="closing">
+    <p>
+      納税ダッシュボードは、難しい政策論ではない。
+      自分のお金の話だ。年間いくら払って、どこへ行って、地元にいくら戻ってきたか。
+      それが一画面で見えれば、多くのことが自分事になる。
+    </p>
+    <p>
+      技術はある。データはある。番号もある。
+      あとは——なぜそれが存在しないのかを、考えてみてほしい。
+    </p>
+  </div>
+
+  <div class="article-footer">
+    <span>国まもりプロジェクト 資料室</span>
+    <span>ドラフト版</span>
+  </div>
+
+</main>
+
+</body>
+</html>
