@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>裏付け資料・参考文献 ― 戦後日本の歩み</title>
+<style>
+  :root {
+    --bg: #F8F8F6;
+    --ink: #1A1A1A;
+    --ink-light: #555550;
+    --accent: #8B2020;
+    --rule: #DDDDD8;
+    --section-num: #C8C8C0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 17px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    line-height: 1.9;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+  }
+
+  header {
+    border-top: 3px solid var(--accent);
+    padding-top: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .project-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .back-link {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  h1 {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    letter-spacing: 0.06em;
+  }
+
+  /* 検証ブロック */
+  .ver-block {
+    margin-bottom: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .ver-block:last-of-type {
+    border-bottom: none;
+  }
+
+  .ver-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .ver-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--section-num);
+    font-family: Georgia, serif;
+    flex-shrink: 0;
+  }
+
+  .ver-title {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  /* 検証結果サマリー */
+  .summary {
+    background: #F0F0EC;
+    border-left: 3px solid var(--accent);
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .summary-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  /* 資料リスト */
+  .source-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .source-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 0.88rem;
+  }
+
+  .source-item:last-child {
+    border-bottom: none;
+  }
+
+  .source-type {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    background: var(--rule);
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.3rem;
+  }
+
+  .source-name {
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .source-desc {
+    color: var(--ink-light);
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+
+  /* 留保事項 */
+  .caveat {
+    margin-top: 1.2rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--rule);
+    font-size: 0.84rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .caveat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    margin-bottom: 0.3rem;
+  }
+
+  /* フッター */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 2.5rem 1.2rem 5rem;
+    }
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="project-label">国まもりプロジェクト</div>
+  <a class="back-link" href="sengo_nihon.html">← 本文に戻る</a>
+  <h1>裏付け資料・参考文献</h1>
+  <div class="subtitle">戦後日本の歩み ― 日本国憲法をめぐる7つの問い</div>
+</header>
+
+<!-- 検証1 -->
+<div class="ver-block">
+  <div class="ver-header">
+    <div class="ver-num">01</div>
+    <div class="ver-title">アメリカはどこまで意図していた？</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">検証結果</div>
+    本国レベルの要求は「刃向かわない国・象徴天皇・民主主義国家の形」の三点に絞られており、社会構造全体を作り変える設計図は一次資料から読み取れない。9条の起源は日本側草案にあるとされ、本国主導とは言い切れない。
+  </div>
+
+  <ul class="source-list">
+    <li class="source-item">
+      <span class="source-type">一次資料</span>
+      <span class="source-name">SWNCC150/4（初期対日方針）</span>
+      <span class="source-desc">国務・陸軍・海軍三省調整委員会が策定した占領の基本方針。平和的で責任ある政府の樹立と、国民の自由な意思による政治形態の確立を究極目的とする。社会構造の根幹改変まで要求する記述は含まれない。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">一次資料</span>
+      <span class="source-name">SWNCC228（憲法改正草案）</span>
+      <span class="source-desc">9条に相当する戦力放棄条項を含まない。軍の文民統制確立と天皇の軍事権能剥奪が主眼。9条類似規定は帝国弁護士会・日本政府草案に起源があるとされる。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考資料</span>
+      <span class="source-name">国立国会図書館「日本国憲法の誕生」</span>
+      <span class="source-desc">憲法制定過程の一次資料を収録。SWNCC文書・GHQ草案・日本側草案の対照が可能。https://www.ndl.go.jp/constitution/</span>
+    </li>
+  </ul>
+</div>
+
+<!-- 検証2 -->
+<div class="ver-block">
+  <div class="ver-header">
+    <div class="ver-num">02</div>
+    <div class="ver-title">理想主義者たちが見せた本気</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">検証結果</div>
+    GS(民政局)はニューディール左派・社会民主主義志向の人材で構成され、本国の想定を超えた社会改革を本気の理想主義として実装した。弱体化の意図ではなく、理想の拡大解釈による実装だった。
+  </div>
+
+  <ul class="source-list">
+    <li class="source-item">
+      <span class="source-type">人物・組織</span>
+      <span class="source-name">チャールズ・ケーディス（GS局長代理）</span>
+      <span class="source-desc">ニューディール政策に関与した改革派法律家。GS内の改革推進の中心人物。後に逆コースへの転換に反対して帰国・辞任。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">人物・組織</span>
+      <span class="source-name">ベアテ・シロタ・ゴードン（GS起草委員）</span>
+      <span class="source-desc">憲法24条（家族生活における個人の尊厳・両性平等）の起草者。日本でのジェンダー平等実現を強く望んでいたことを回顧録で証言。理想主義的動機の典型例。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">袖井林二郎『マッカーサーの二千日』（中公文庫）</span>
+      <span class="source-desc">占領期のGHQ内部の力学を詳述。GS改革派の動機と活動の実態を一次資料に基づき記述。</span>
+    </li>
+  </ul>
+
+  <div class="caveat">
+    <div class="caveat-label">留保</div>
+    「ホイットニーが弱体化を意図的に進めた」という記述が一部の読み物に存在するが、一次資料的な裏付けは確認できていない。GS側の意図は理想主義的実装と見るのが史実に忠実。
+  </div>
+</div>
+
+<!-- 検証3 -->
+<div class="ver-block">
+  <div class="ver-header">
+    <div class="ver-num">03</div>
+    <div class="ver-title">空白を埋めたのは誰？</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">検証結果</div>
+    教職追放は130万人審査・7003人追放（約0.5%）。左派の空席参入は偶然の副産物だけでなく、共産党員・左派知識人がGHQ民政局に積極的に進言・情報提供し能動的に推進した側面がある。
+  </div>
+
+  <ul class="source-list">
+    <li class="source-item">
+      <span class="source-type">一次資料</span>
+      <span class="source-name">教職追放令（1946年）および追放審査資料</span>
+      <span class="source-desc">審査対象130万人超、実際の追放者7003人という数字の出典。追放基準（軍国主義・極端な国家主義・職業軍人・文部省思想局在勤者等）の確認が可能。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">竹前栄治『GHQ』（岩波新書）</span>
+      <span class="source-desc">占領期の民政局と左派の関係、公職追放の実態を詳述。左派知識人がGHQに積極的に関与した経緯を記述。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">福島鑄郎『戦後教育の原点』</span>
+      <span class="source-desc">教職追放後の教育界の人員構成変化と日教組結成の経緯を分析。</span>
+    </li>
+  </ul>
+</div>
+
+<!-- 検証4 -->
+<div class="ver-block">
+  <div class="ver-header">
+    <div class="ver-num">04</div>
+    <div class="ver-title">GHQ内部から警鐘を鳴らす人たち</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">検証結果</div>
+    GS（改革派）とG2（反共派）の対立は当時から広く知られた事実。G2はGSの改革を「弱体化」ではなく「ソ連介入を招く結果」として批判。ケーディスの辞任は転換点の象徴的事例。
+  </div>
+
+  <ul class="source-list">
+    <li class="source-item">
+      <span class="source-type">人物・組織</span>
+      <span class="source-name">チャールズ・ウィロビー（G2参謀第二部長）</span>
+      <span class="source-desc">GS改革派と対立した反共路線の中心人物。マッカーサーの側近として逆コースを主導。GS・G2対立の具体的事例の調査起点として有効。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">豊下楢彦『昭和天皇・マッカーサー会見』（岩波現代文庫）</span>
+      <span class="source-desc">GHQ内部の権力構造とGS/G2の対立を分析。占領政策の転換過程を詳述。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">ジョン・ダワー『敗北を抱きしめて』（岩波書店）</span>
+      <span class="source-desc">占領期日本の全体像を描いた基本文献。GS/G2の力学、逆コースへの転換を詳述。ピュリッツァー賞受賞作。</span>
+    </li>
+  </ul>
+</div>
+
+<!-- 検証5 -->
+<div class="ver-block">
+  <div class="ver-header">
+    <div class="ver-num">05</div>
+    <div class="ver-title">それでも揺り戻せなかったものとは？</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">検証結果</div>
+    逆コースで軍事・経済の自立性は回復されたが、精神的・共同体的構造は手付かずのまま残った。レッドパージの規模は1万〜4万人と資料によって幅があり、GHQ指示分と日本側便乗分が混在している。
+  </div>
+
+  <ul class="source-list">
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">明神勲「レッドパージ研究」</span>
+      <span class="source-desc">レッドパージの規模を1949年7月〜1951年9月に約3万名と推計。GHQ督励・示唆のもとに行われたとするが、直接指示の範囲には留保。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">荻野富士夫『戦後教育の原像』</span>
+      <span class="source-desc">教育界における逆コースの影響と、追放解除後も左派的傾向が日教組組織文化として残存した経緯を分析。</span>
+    </li>
+  </ul>
+
+  <div class="caveat">
+    <div class="caveat-label">留保</div>
+    レッドパージの総数（1万・3万・4万という幅）はGHQ指示分と日本政府・企業の自主的便乗解雇の合算範囲の定義の違いによる。裁判でもこの論点は争われており、確定的な数字は存在しない。
+  </div>
+</div>
+
+<!-- 検証6 -->
+<div class="ver-block">
+  <div class="ver-header">
+    <div class="ver-num">06</div>
+    <div class="ver-title">設計者のいないこの国の構造</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">検証結果</div>
+    「日本は成功した社会主義国」論はゴルバチョフ発言・護送船団方式論として広く共有されている。ただし起源は占領期だけでなく、戦時体制（1939年〜）の官僚主導開発主義体制にも遡る。
+  </div>
+
+  <ul class="source-list">
+    <li class="source-item">
+      <span class="source-type">発言記録</span>
+      <span class="source-name">ゴルバチョフ「日本は世界で最も成功した社会主義国」</span>
+      <span class="source-desc">ソ連書記長・大統領として経済停滞に苦慮していたゴルバチョフが、日本の護送船団的経済運営を皮肉を込めて評した言葉。称賛ではなく批判的観察として語られたもの。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">野口悠紀雄『1940年体制』（東洋経済新報社）</span>
+      <span class="source-desc">終身雇用・護送船団方式・大蔵省主導の金融行政の起源が戦時体制（1940年前後）にあることを論証した基本文献。占領期だけでなく戦時体制という前史を示す。</span>
+    </li>
+    <li class="source-item">
+      <span class="source-type">参考文献</span>
+      <span class="source-name">ロバート・ニスベット『共同体の探求』</span>
+      <span class="source-desc">リバタリアン的個人主義と国家社会主義が「中間団体の解体」という一点で機能的に同型になるという議論を展開した保守思想の基本文献。今回の議論の理論的補助線として有効。</span>
+    </li>
+  </ul>
+
+  <div class="caveat">
+    <div class="caveat-label">留保</div>
+    「結果としての社会主義的構造」という本記事の見立ては推論の性格を持つ。先行研究（野口悠紀雄・ジョン・ダワー等）と方向性は一致するが、「占領期の偶然の重なりが原因」という因果については引き続き検証が必要。
+  </div>
+</div>
+
+<footer>
+  <div>© 国まもりプロジェクト</div>
+  <div><a href="sengo_nihon.html">← 本文に戻る</a></div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tags" content="憲法,戦後,GHQ,占領,歴史">
+<title>戦後日本の歩み ― 日本国憲法をめぐる7つの問い</title>
+<style>
+  :root {
+    --bg: #F8F8F6;
+    --ink: #1A1A1A;
+    --ink-light: #555550;
+    --accent: #8B2020;
+    --rule: #DDDDD8;
+    --section-num: #C8C8C0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 17px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    line-height: 1.9;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+  }
+
+  /* ヘッダー */
+  header {
+    border-top: 3px solid var(--accent);
+    padding-top: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .project-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    border-left: 2px solid var(--accent);
+    padding-left: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  /* 導入 */
+  .intro {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+  }
+
+  .intro h2 {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .keyword {
+    display: inline-block;
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin: 1rem 0;
+    font-style: italic;
+  }
+
+  .lead-question {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 1.6rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent);
+    line-height: 1.6;
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+  }
+
+  /* 検証セクション */
+  .verification {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .verification-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .ver-num {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--section-num);
+    line-height: 1;
+    font-family: Georgia, serif;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .ver-title {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  /* 箇条書き */
+  .policy-list {
+    list-style: none;
+    margin: 1.4rem 0;
+    padding: 0;
+  }
+
+  .policy-list li {
+    padding: 0.5rem 0 0.5rem 1.4rem;
+    position: relative;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 0.95rem;
+  }
+
+  .policy-list li:last-child {
+    border-bottom: none;
+  }
+
+  .policy-list li::before {
+    content: "・";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* 強調 */
+  .emphasis {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .aside-note {
+    background: #F0F0EC;
+    border-left: 3px solid var(--rule);
+    padding: 1rem 1.2rem;
+    margin: 1.4rem 0;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .bridge-question {
+    margin-top: 1.8rem;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  /* 着地 */
+  .landing {
+    margin-top: 1rem;
+  }
+
+  .landing h2 {
+    font-family: "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  .landing-text {
+    line-height: 2.1;
+  }
+
+  .final-question {
+    margin-top: 2.4rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.6rem;
+  }
+
+  /* フッター */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 600px) {
+    body {
+      padding: 2.5rem 1.2rem 5rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    .ver-num {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="project-label">国まもりプロジェクト</div>
+  <h1>戦後日本の歩み</h1>
+  <div class="subtitle">―日本国憲法をめぐる7つの問い―</div>
+</header>
+
+<!-- 導入 -->
+<section class="intro">
+  <div class="section-label">導入</div>
+  <h2>『弱体化装置』という言葉の誘惑</h2>
+
+  <p>「日本国憲法の真の意味とは何か」と問われたとき、頭をよぎる言葉がある。</p>
+
+  <div class="keyword">弱体化装置。</div>
+
+  <p>この言葉は気持ちいい。知的に見える。何かを見抜いた気にさせてくれる。陰謀論的な快楽と、歴史的洞察の両方を同時に味わえる、便利な一言だ。</p>
+
+  <p>だが立ち止まって考えてみると、一つの問いが浮かぶ。</p>
+
+  <div class="lead-question">誰が、いつ、何のために設計したのか。</div>
+
+  <p>6つの検証結果を用意した。あとは、あなた自身が確かめてほしい。</p>
+</section>
+
+<!-- 検証1 -->
+<section class="verification">
+  <div class="verification-header">
+    <div class="ver-num">01</div>
+    <div class="ver-title">アメリカはどこまで意図していた？</div>
+  </div>
+
+  <p>占領期のアメリカが日本に求めたものを、一次資料レベルで確認すると、驚くほどシンプルだ。</p>
+
+  <p>SWNCC150などの政策文書が示す核心的な要求は、三点に絞られる。</p>
+
+  <ul class="policy-list">
+    <li>二度と軍事的に刃向かわない国にすること。</li>
+    <li>天皇の権威を政治利用させないこと。</li>
+    <li>自由主義陣営の民主主義国家の形にすること。</li>
+  </ul>
+
+  <p>「日本の社会構造を根こそぎ作り変える」という設計図は、そこにはない。</p>
+
+  <p>注目すべきは9条だ。戦力放棄という、憲法の中で最も「弱体化装置」らしく見えるこの条項は、実はアメリカ本国の草案には存在していなかった。帝国弁護士会や日本政府側の草案に起源があるとされている。</p>
+
+  <p>アメリカが意図していたのは「刃向かわない国」だった。それ以上でも、それ以下でもなかった。</p>
+
+  <div class="bridge-question">では、それ以上の改革は誰が始めたのか。</div>
+</section>
+
+<!-- 検証2 -->
+<section class="verification">
+  <div class="verification-header">
+    <div class="ver-num">02</div>
+    <div class="ver-title">理想主義者たちが見せた本気</div>
+  </div>
+
+  <p>GHQ民政局(GS)には、ニューディール左派・社会民主主義志向の人材が多数配置されていた。局長代理ケーディスをはじめ、ルーズベルトのニューディール政策に参画した改革派、日本研究の専門家たちが揃っていた。</p>
+
+  <p>彼らの動機は「弱体化」ではなかった。</p>
+
+  <p>「本国でも実現できなかった理想の民主主義を、ここで作る」という高揚感だった。</p>
+
+  <p>その結果、実装されたものを並べると壮観だ。</p>
+
+  <ul class="policy-list">
+    <li>神道と国家の分離（神道指令）</li>
+    <li>教育制度の根本的な作り直し</li>
+    <li>当用漢字・現代仮名遣いへの国語改革</li>
+    <li>財閥解体</li>
+    <li>農地改革</li>
+    <li>内務省の解体</li>
+  </ul>
+
+  <p>本国が求めた三点の要求を、はるかに超えていた。「民主主義国家にする」という指示が、現場の理想主義というフィルターを通した瞬間、社会構造の根幹まで作り変えるレベルに膨れ上がった。</p>
+
+  <p>これを止める者が当初いなかった。</p>
+
+  <div class="bridge-question">では、止めようとした人たちはいたのか。そして、なぜ止められなかったのか。</div>
+</section>
+
+<!-- 検証3 -->
+<section class="verification">
+  <div class="verification-header">
+    <div class="ver-num">03</div>
+    <div class="ver-title">空白を埋めたのは誰？</div>
+  </div>
+
+  <p>公職追放は、戦前エリート層を教育界から排除した。審査対象は130万人を超えた。</p>
+
+  <p>ただし実際に追放されたのはわずか7003人、全体の約0.5%だった。<br>追放基準が「軍国主義との結びつき」だったからだ。</p>
+
+  <p>そしてその空席を埋めたのが、戦前に弾圧されていた左派・自由主義系の教育者たちだ。</p>
+
+  <p>ただし「偶然に空席を埋めた」というだけでは正確ではない。</p>
+
+  <p>日本共産党員や左派知識人は、GHQ民政局に積極的に進言・情報提供し、自分たちに有利な人事を推し進めた。占領下という状況を利用して。</p>
+
+  <p>ここで見えてくるのは、GHQという外部の力だけでなく、日本国内の当事者たちもまた、占領構造を自分の都合で動かしていたという事実だ。</p>
+
+  <p>アメリカの意図でも、単純な偶然でもない第三の力が、ここに働いていた。</p>
+
+  <div class="bridge-question">では、GHQの内部では何が起きていたのか。</div>
+</section>
+
+<!-- 検証4 -->
+<section class="verification">
+  <div class="verification-header">
+    <div class="ver-num">04</div>
+    <div class="ver-title">GHQ内部から警鐘を鳴らす人たち</div>
+  </div>
+
+  <p>GHQは一枚岩ではなかった。</p>
+
+  <p>民政局(GS)が理想主義的な改革を推し進める一方で、冷戦の最前線に立つ参謀第二部(G2)は別の視点から日本を見ていた。</p>
+
+  <p>G2が警戒したのは、GSの改革が進めば進むほど、日本がソ連の介入を受けやすい国になるという現実だった。「民主化」の名のもとに進む非軍事化・左傾化は、結果として日本を弱体化させると、彼らは見抜いていた。</p>
+
+  <p>ここで重要なのは、「GSが日本を意図的に弱体化させている」わけではないという点だ。彼らは本気で理想とする民主主義国家誕生に尽力した。しかしG2はそこに危険な匂いを感じ取っていた。</p>
+
+  <div class="aside-note">意図と結果は、必ずしも一致しない。</div>
+
+  <p>この対立は最終的に、占領政策の大転換という形で決着する。中国の共産化、朝鮮戦争の勃発。冷戦の激化がG2に主導権をもたらした。</p>
+
+  <p>民政局のケーディスはこの転換を阻止しようとして帰国し、結果として辞任した。理想主義者たちの時代は、静かに終わった。</p>
+
+  <div class="bridge-question">では、その後に何が起きたのか。</div>
+</section>
+
+<!-- 検証5 -->
+<section class="verification">
+  <div class="verification-header">
+    <div class="ver-num">05</div>
+    <div class="ver-title">それでも揺り戻せなかったものとは？</div>
+  </div>
+
+  <p>G2が主導権を握り、逆コースが始まった。</p>
+
+  <p>レッドパージで左派教員・共産党員が追放され、財閥解体は中途で打ち切られ、警察予備隊が創設された。資本主義陣営の一員として、日本は再び立ち上がる道を歩み始めた。</p>
+
+  <p>揺り戻しは、たしかに起きた。</p>
+
+  <p>しかし戻ったのは、軍事と経済の自立性だけだった。</p>
+
+  <p>神道と国家の関係、伝統的な共同体の紐帯、教育の基調、歴史認識の枠組み。これらは、制度を一本変えれば戻る性質のものではなかった。人の意識に刻まれたものは、命令では消せない。墨で塗られた教科書の記憶のように。</p>
+
+  <div class="aside-note">壊すのは速く、戻すのは遅い。あるいは、戻せない。</div>
+
+  <p>レッドパージの規模は資料によって異なる。1万人とも、3万人とも、4万人とも言われる。この幅自体が、もう一つの事実を示している。GHQが直接指示した範囲と、日本の政府・企業が便乗して拡大した範囲が、混在している。</p>
+
+  <p>検証3で左派が占領を利用したように、今度は保守派が逆コースを利用した。彼らの思惑にG2が利用された格好だ。</p>
+
+  <p>その結果、揺り戻しは中途半端に終わった。そして残されたものが、次の検証で見えてくる。</p>
+</section>
+
+<!-- 検証6 -->
+<section class="verification">
+  <div class="verification-header">
+    <div class="ver-num">06</div>
+    <div class="ver-title">設計者のいないこの国の構造</div>
+  </div>
+
+  <p>揺り戻しが中途半端に終わった結果、一つの構造が静かに定着した。</p>
+
+  <p><span class="emphasis">中間団体を欠いた、中央管理主体と個人の直接接続だ。</span></p>
+
+  <p>かつて個人と国家の間には、家・地域・神社・業界の互助組織といった、無数の中間団体が存在していた。人々はその網の目の中で生き、助け合い、共同体としての判断を積み重ねてきた。</p>
+
+  <p>占領期の改革はその網を、意図せず解体した。</p>
+
+  <p>そして戦後の日本が選んだのは、護送船団方式だった。官僚が産業を束ね、業界団体を通じて資源を配分し、企業が個人の人生を丸抱えする。終身雇用・年功序列・新卒一括採用という形で、個人は中間団体の代わりに企業という「箱」に直接収められた。</p>
+
+  <p>本国の戦略家も、GSの理想主義者も、G2の職業軍人も、占領を利用した左派も保守派も、それぞれの思惑で動いており、誰一人として「こういう国を作ろう」という俯瞰した視点を持ち合わせていなかった。<br>その結果、不幸な偶然が重なり、この国が形作られていった。</p>
+
+  <p>資本主義の看板を掲げながら、その実態は計画経済に近かった。<br>ゴルバチョフはかつて皮肉を込めてこう言った。「日本は世界で最も成功した社会主義国だ」と。</p>
+</section>
+
+<!-- 着地 -->
+<section class="landing">
+  <div class="section-label">着地</div>
+  <h2>今あなたが問われている</h2>
+
+  <div class="landing-text">
+    <p>陰謀論っぽく、日本国憲法は「弱体化装置」と呼ぶ人がいる。<br>
+    本当のところはどうなのか知りたくて、6つの検証を行った。<br>
+    検証結果は、複数の力学の偶然の重なりを示していた。<br>
+    しかしそれと同時に陰謀を否定する材料は見つけられなかった。</p>
+
+    <p>占領期に始まり今に至る歴史の中で日本は形作られていった。<br>
+    そして、今僕たちはその構造の中で生きている。</p>
+  </div>
+
+  <div class="final-question">これを読み終えて、あなたは何を考えただろうか。</div>
+</section>
+
+<footer>
+  <div>© 国まもりプロジェクト</div>
+  <div><a href="sengo_nihon_sources.html">→ 裏付け資料・参考文献</a></div>
+</footer>
+
+</body>
+</html>
