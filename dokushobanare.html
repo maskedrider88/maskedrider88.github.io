@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>読書離れという言葉について ｜ 国まもりプロジェクト 資料室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f3ec;
+    --paper-deep:#efeade;
+    --ink:#2a251f;
+    --ink-soft:#5a5245;
+    --rule:#d8d0bf;
+    --seal:#8b3a30;
+    --obi:#8b3a30;
+    --obi-bg:#ece3d0;
+    --obi-ink:#3a2f26;
+    --moss:#5c6650;
+    --maxw:700px;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(ellipse at top left, rgba(0,0,0,0.015), transparent 40%),
+      radial-gradient(ellipse at bottom right, rgba(0,0,0,0.02), transparent 45%);
+    color:var(--ink);
+    font-family:"Noto Serif JP","Shippori Mincho",serif;
+    line-height:2;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- header ---------- */
+
+  .masthead{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:64px 24px 28px;
+    text-align:center;
+  }
+
+  .kicker{
+    font-family:"Noto Sans JP",sans-serif;
+    font-size:11px;
+    letter-spacing:0.35em;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+  }
+  .kicker::before,.kicker::after{
+    content:"";
+    height:1px;
+    width:32px;
+    background:var(--rule);
+  }
+
+  h1.title{
+    font-family:"Shippori Mincho",serif;
+    font-weight:800;
+    font-size:clamp(28px,5vw,42px);
+    line-height:1.55;
+    margin:0 0 20px;
+    letter-spacing:0.02em;
+    animation:fadeUp 900ms ease both;
+  }
+
+  .lede{
+    font-family:"Noto Sans JP",sans-serif;
+    font-size:14px;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+    margin:0;
+  }
+
+  .seal{
+    width:46px;
+    height:46px;
+    margin:26px auto 0;
+    border:2px solid var(--seal);
+    border-radius:6px;
+    color:var(--seal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Shippori Mincho",serif;
+    font-weight:800;
+    font-size:15px;
+    letter-spacing:0.15em;
+    writing-mode:vertical-rl;
+    opacity:0.85;
+    transform:rotate(0.5deg);
+  }
+
+  /* ---------- article shell ---------- */
+
+  article{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:8px 24px 100px;
+  }
+
+  .rule{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:52px 0;
+    width:100%;
+  }
+
+  h2{
+    font-family:"Shippori Mincho",serif;
+    font-weight:700;
+    font-size:clamp(19px,3vw,23px);
+    line-height:1.6;
+    margin:0 0 26px;
+    padding-left:16px;
+    border-left:3px solid var(--moss);
+  }
+
+  p{
+    font-size:16.5px;
+    margin:0 0 30px;
+    color:var(--ink);
+  }
+
+  ul{
+    margin:0 0 30px;
+    padding-left:0;
+    list-style:none;
+  }
+  li{
+    font-size:16.5px;
+    padding:9px 0 9px 22px;
+    border-bottom:1px dashed var(--rule);
+    position:relative;
+  }
+  li:last-child{border-bottom:none;}
+  li::before{
+    content:"・";
+    position:absolute;
+    left:0;
+    color:var(--moss);
+  }
+
+  strong{
+    font-weight:600;
+    box-shadow:inset 0 -6px 0 rgba(92,102,80,0.18);
+  }
+
+  /* ---------- obi (帯) pull-quote ---------- */
+
+  .obi{
+    background:var(--obi-bg);
+    color:var(--obi-ink);
+    margin:56px -24px;
+    padding:30px 30px;
+    position:relative;
+    border-top:1px solid var(--obi);
+    border-bottom:1px solid var(--obi);
+  }
+  .obi::before,.obi::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:36px;
+    height:1px;
+    background:var(--obi);
+    opacity:0.55;
+  }
+  .obi::before{top:8px;}
+  .obi::after{bottom:8px;}
+  .obi p{
+    font-family:"Shippori Mincho",serif;
+    font-weight:600;
+    font-size:clamp(16px,3vw,19px);
+    line-height:2;
+    color:var(--obi-ink);
+    margin:0;
+    text-align:center;
+  }
+  .obi .obi-label{
+    font-family:"Noto Sans JP",sans-serif;
+    font-size:10.5px;
+    letter-spacing:0.3em;
+    text-align:center;
+    color:var(--obi);
+    opacity:0.85;
+    margin:0 0 16px;
+  }
+
+  /* ---------- closing address ---------- */
+
+  .address{
+    background:var(--paper-deep);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:36px 30px;
+    margin-top:8px;
+  }
+  .address .to{
+    font-family:"Noto Sans JP",sans-serif;
+    font-size:12px;
+    letter-spacing:0.25em;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+  }
+  .address p{margin:0 0 24px;}
+  .address p:last-of-type{margin-bottom:0;}
+
+  .closing-mark{
+    font-family:"Shippori Mincho",serif;
+    font-size:15px;
+    color:var(--ink-soft);
+    text-align:right;
+    margin:70px 24px 0;
+    max-width:var(--maxw);
+    margin-left:auto;
+    margin-right:auto;
+    padding:0 24px;
+  }
+
+  footer{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:20px 24px 60px;
+    text-align:center;
+    font-family:"Noto Sans JP",sans-serif;
+    font-size:11px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  @media (max-width:520px){
+    .masthead{padding:48px 20px 24px;}
+    article{padding:8px 20px 80px;}
+    .obi{margin:48px -20px; padding:28px 22px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    h1.title{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="kicker">資 料 室 ｜ 覚 え 書 き</p>
+  <h1 class="title">読書離れという<br>言葉について</h1>
+  <p class="lede">— 何が失われ、何が失われていないのか —</p>
+  <div class="seal">私見</div>
+</header>
+
+<article>
+
+  <section>
+    <h2>「読書離れ」は何を測っているのか</h2>
+    <p>読書離れが叫ばれて久しい。かつては仕事や学業の忙しさが理由とされ、今はスマホやSNSが理由とされる。そしてその先には、決まって「深い思考ができなくなる」という警句が続く。</p>
+    <p>この話、一度立ち止まって腑分けしてみる必要がある。</p>
+    <p>読書と一口に言うが、その中身は一様ではない。</p>
+    <ul>
+      <li>知識を得るための読書（実用書・思想書・歴史書）</li>
+      <li>娯楽としての読書（物語・小説）</li>
+      <li>記録・連絡のための読書（書簡・実用文書）</li>
+      <li>宗教的実践としての読書（経典の読誦）</li>
+    </ul>
+    <p>このうち、行為そのものが目的である経典を除けば、残る三つに共通するのは「書物という形式でなければならない必然性がない」という一点である。知識を得たければ、今は動画でも対話型AIでも十分に足りる。娯楽であれば、映像やゲームの方が没入度で勝ることさえある。記録・連絡に至っては、もはや紙という媒体を選ぶ理由がどこにもない。</p>
+    <p>つまり、統計に表れる「読書離れ」――書籍の実売部数や書店の売上の減少――は、文化の衰退でも思考力の低下でもなく、<strong>目的に対してより効率のよい手段への、ごく合理的な移行の結果</strong>にすぎない。</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>唯一、統計に映らない希少化</h2>
+    <p>ただし、一点だけ話が違う領域がある。</p>
+    <p>それは「書き手の思考過程ごと受け取りたい」という読み方である。何が書かれているかという結論・情報だけでなく、著者がなぜその言葉を選び、なぜそこで言い切らなかったか、その逡巡やレトリックまで含めて受け取ろうとする読み方だ。</p>
+    <p>この読み方は、実は「紙の本」という物理形式には依存していない。依存しているのは、要素の分割や拾い読みに耐えない、中断のない線的な文章構造の方である。電子テキストであっても、この構造さえ保たれていれば、思考過程を追体験させる機能は失われない。</p>
+    <p>拾い読みや速読、あるいは要点だけを空間的に配置するマインドマップ的な理解は、これらとは別の目的――「何が書かれているか」を効率よく把握すること――には最適化された、正当な読み方である。人間が元来持つ最小努力への傾向（この種の性質は、インターネットの登場よりずっと前から知られている）を考えれば、拾い読みが広がったことをもって「思考力が壊された」と断じるのは、いささか性急にすぎる。</p>
+    <p>本当に希少化しているとすれば、それはこの「思考過程ごと受け取る」読み方であり、これは書籍の売上という数字にはそもそも現れない。<strong>出版業界が示す「読書離れ」のグラフは、守るべき本質を可視化できていない</strong>のである。</p>
+  </section>
+
+  <div class="obi">
+    <p class="obi-label">帯 ｜ 一 節</p>
+    <p>問われているのは、読者の読書量ではない。<br>出版という営みが、その代替されない価値に、<br>正しく的を絞れるかどうかである。</p>
+  </div>
+
+  <section>
+    <h2>誰が、なぜこの言葉を訴えているのか</h2>
+    <p>ではなぜ、これほどまでに「読書離れ」が問題として語られ続けるのか。</p>
+    <p>読書という行為の形式――紙という物理的な容れ物――にはっきりとした利害を持つ主体は限られている。出版社はもちろん、印刷・製紙・製本・取次・書店という、長年にわたって相互に依存し合ってきた業界エコシステム全体がそこに含まれる。出版社単独であれば電子化だけでも生き残れるかもしれないが、この構造の中に組み込まれている以上、単独で舵を切ることは容易ではない。だからこそ出版社は、業界全体を代弁する立場から「読書離れは問題だ」と訴え続ける。</p>
+    <p>その訴えが「深い思考の喪失」という、社会全体の利益であるかのような語り口を取るのは、自然な成り行きでもある。「うちの商品が売れなくて困る」とは言えないから、より訴求力のある言葉に翻訳される。これは悪意ある欺瞞というより、業界の切実な危機感が辿り着いた、ひとつのレトリックなのだろう。</p>
+    <p>しかしこのレトリックには、代償がある。一般読者が「本を読まなくなった自分」に漠然とした罪悪感を覚えるとすれば、それは本来、自分の目的とは無関係な、業界の構造的な焦りを、あたかも自分自身の問題であるかのように背負わされているにすぎない。</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>提言</h2>
+    <div class="address">
+      <p class="to">To ｜ 出版に携わるすべての人へ</p>
+      <p><strong>一つ。「読書離れ」を訴えるのは、もうやめてほしい。</strong><br>
+      この言葉は、もはや実効性を持たない。統計として測っているのは形式の衰退であって、本質的な危機ではない。そしてこのレトリックは、いずれ見透かされる。見透かされた時、業界に対する信頼はレトリックの分だけ目減りする。守りたいものがあるなら、その中身を正確に名指しした方がいい。</p>
+      <p><strong>二つ。売り方を、根本から考え直してほしい。</strong><br>
+      単行本を先に、価格の高い形で出し、数年かけて需要を確かめてから文庫化するという現行のモデルは、需要が確定する前に紙・装丁という固定費を先行投資する、リスクの高い構造になっている。</p>
+      <p>発想を逆転させてはどうか。電子・文庫という低コストな形態を先に出し、そこで確かな需要と熱量を持つ読者がついた作品にだけ、装丁を凝らした愛蔵版・所有版を後から投入する。これは既に「愛蔵版」「豪華版」という形で部分的には実践されている考え方だが、これを例外的な追加展開ではなく、標準の流れそのものとして組み直すことはできないか。</p>
+      <p>そしてこの所有版が担うべき役割は、もはや情報を運ぶことではない。装丁・紙質・造本という、電子化されても代替されない価値――所有する喜びそのものに、正面から向き合った本づくりである。</p>
+      <p>書物という「容れ物」が縮小していくことは、避けられない。しかし、そこに込められるべき「思考過程を追体験させる本」と「所有する喜びとしての本」という二つの価値は、これから先も、決して代替されない場所に立ち続けるはずだ。</p>
+      <p>問われているのは、読者の読書量ではない。出版という営みが、その代替されない価値に、正しく的を絞れるかどうかである。</p>
+    </div>
+  </section>
+
+</article>
+
+<p class="closing-mark">俯瞰の視点、判断は読者に委ねる。</p>
+
+<footer>国まもりプロジェクト ｜ 資料室</footer>
+
+</body>
+</html>
