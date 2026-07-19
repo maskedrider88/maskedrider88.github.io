@@ -1,6 +1,6 @@
 ---
 meta-viewport: width=device-width, initial-scale=1.0
-layout: default
+
 title: セーフティネット制度構想（案）
 ---
 <head>
