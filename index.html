@@ -1,184 +1,395 @@
-<!doctype html>
+<!DOCTYPE html> 
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>動画フレームメーカー</title>
-<meta name="description" content="縦動画（9:16）に重ねるフレームPNGを作るツール。入力は端末の外に出ません。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Noto+Sans+JP:wght@900&family=M+PLUS+Rounded+1c:wght@800&display=swap">
-<style>
-:root{--bg:#f4f5f7;--fg:#1d2330;--card:#fff;--line:#d5d9e2;--mut:#5d6575;--ac:#1b2a49;--acfg:#fff;color-scheme:light}
-@media(prefers-color-scheme:dark){:root{--bg:#14171d;--fg:#e9ecf2;--card:#1d222b;--line:#363d4b;--mut:#9aa3b5;--ac:#f2b134;--acfg:#1a1a1a;color-scheme:dark}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 "Noto Sans JP",system-ui,sans-serif}
-.wrap{max-width:980px;margin:0 auto;padding:20px 16px 48px}
-h1{font-size:1.5rem;margin:0 0 4px}
-h2{font-size:1.05rem;margin:28px 0 10px}
-.lead,.note{color:var(--mut);font-size:.9rem;margin:0}
-.cols{display:grid;gap:24px}
-@media(min-width:820px){.cols{grid-template-columns:1fr 340px}.pvcol{position:sticky;top:16px;align-self:start}}
-.designs{display:grid;gap:8px}
-.designs label{display:block;border:2px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px;cursor:pointer}
-.designs input{position:absolute;opacity:0}
-.designs input:checked+span{color:var(--fg)}
-.designs label:has(input:checked){border-color:var(--ac)}
-.designs label:has(input:focus-visible){outline:3px solid var(--ac);outline-offset:2px}
-.designs b{display:block}
-.designs small{color:var(--mut)}
-.row{display:grid;grid-template-columns:5.5em 1fr 5em;gap:8px;align-items:center;margin-bottom:8px}
-.row.f2{grid-template-columns:5.5em 1fr}
-.row label{font-size:.9rem}
-input[type=text],select{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
-input[type=color]{width:100%;height:40px;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:2px}
-.colors{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.colors label{font-size:.85rem;display:block}
-.fonts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:12px 18px;background:var(--ac);color:var(--acfg);cursor:pointer;width:100%}
-button:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
-.pv{width:100%;max-width:320px;margin:0 auto;border:1px solid var(--line);line-height:0;
-background:repeating-conic-gradient(#c9ccd3 0 25%,#eceef2 0 50%) 0 0/20px 20px}
-.pv.sample{background:linear-gradient(160deg,#3b6ea5,#8fc1d4 45%,#e8c97a 70%,#c86a4a)}
-.pv canvas{width:100%;height:auto;display:block}
-.chk{display:flex;gap:8px;align-items:center;margin:10px auto 0;max-width:320px;font-size:.9rem;line-height:1.4}
-dialog{max-width:92vw;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--fg)}
-dialog img{max-width:100%;max-height:68vh;background:#888}
-ol{padding-left:1.3em;margin:0;font-size:.92rem}
-footer{margin-top:32px;font-size:.85rem}
-a{color:inherit}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maskedrider88 — 資料室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Shippori+Mincho:wght@400;600&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141210;
+      --surface: #1e1b17;
+      --border: #2e2a24;
+      --text: #d8cfc4;
+      --muted: #7a7167;
+      --accent: #b8975a;
+      --accent-soft: rgba(184,151,90,0.12);
+      --hover-surface: #272219;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      min-height: 100vh;
+      line-height: 1.8;
+      /* subtle paper grain */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* ─── Layout ─── */
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ─── Header ─── */
+    header {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(184,151,90,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+
+    .header-desc {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 520px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.35s;
+    }
+
+    /* ─── Section ─── */
+    .section {
+      padding: 52px 0;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Cards ─── */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px 28px;
+      position: relative;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .card:hover {
+      background: var(--hover-surface);
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .card::after {
+      content: '→';
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.2s, right 0.2s;
+    }
+    .card:hover::after {
+      opacity: 1;
+      right: 20px;
+    }
+
+    .card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* staggered card animations */
+    .card:nth-child(1) { animation-delay: 0.45s; }
+    .card:nth-child(2) { animation-delay: 0.55s; }
+    .card:nth-child(3) { animation-delay: 0.65s; }
+    .card:nth-child(4) { animation-delay: 0.75s; }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--accent); }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-<h1>動画フレームメーカー</h1>
-<p class="lead">縦動画（9:16）に重ねるフレームPNGを作ります。入力した文字は端末の外に出ません。</p>
+  <div class="wrapper">
 
-<div class="cols">
-<div>
-<h2>1. デザインを選ぶ</h2>
-<div class="designs" id="designs"></div>
+    <header>
+      <p class="header-label">maskedrider88 / GitHub Pages</p>
+      <h1>資料室</h1>
+      <p class="header-desc">
+        調べたこと、考えたことを、読めるかたちに整えておく場所。
+      </p>
+      <img src="img/studiyCatInNight.png" alt="画像の説明です" style="width: 300px;">
+    </header>
 
-<h2>2. 文字を入れる</h2>
-<div id="fields"></div>
-<div class="row f2"><label for="v_f">一番下の帯</label><input type="text" id="v_f" placeholder="空にすると帯は出ません"></div>
+    <style>
+    .tool-cards{--tc-bg:#fff;--tc-fg:#1d2330;--tc-mut:#5d6575;--tc-ac:#1b2a49;--tc-line:#d5d9e2;
+     display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:0 0 24px}
+    @media(prefers-color-scheme:dark){.tool-cards{--tc-bg:#1d222b;--tc-fg:#e9ecf2;--tc-mut:#9aa3b5;--tc-ac:#f2b134;--tc-line:#363d4b}}
+    .tool-card{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"ic ttl badge" "desc desc desc";
+     gap:6px 12px;align-items:center;padding:14px 16px;background:var(--tc-bg);color:var(--tc-fg);
+     border:2px solid var(--tc-ac);border-radius:10px;text-decoration:none}
+    .tool-card:hover{background:color-mix(in srgb,var(--tc-ac) 8%,var(--tc-bg))}
+    .tool-card:focus-visible{outline:3px solid var(--tc-ac);outline-offset:3px}
+    .tool-ic{grid-area:ic;width:44px;height:44px;color:var(--tc-ac)}
+    .tool-ic .bar{fill:var(--tc-bg)}
+    .tool-ttl{grid-area:ttl;font-weight:700;font-size:1.05rem;line-height:1.3}
+    .tool-badge{grid-area:badge;font-size:.75rem;padding:2px 8px;border:1px solid var(--tc-ac);border-radius:999px;color:var(--tc-ac)}
+    .tool-desc{grid-area:desc;font-size:.9rem;line-height:1.6;color:var(--tc-mut)}
+    </style>
+    
+    <div class="tool-cards">
+     <a class="tool-card" href="/tools/frame-factory/">
+      <svg class="tool-ic" viewBox="0 0 48 48" aria-hidden="true">
+       <path fill="currentColor" fill-rule="evenodd" d="M15 3h18a3 3 0 0 1 3 3v36a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zM15 17h18v10.1H15z"/>
+       <rect class="bar" x="17" y="7.5" width="14" height="3" rx="1.5"/>
+       <rect class="bar" x="17" y="31" width="14" height="2.6" rx="1.3"/>
+       <rect class="bar" x="17" y="36" width="9" height="2.6" rx="1.3"/>
+      </svg>
+      <span class="tool-ttl">動画フレームメーカー</span>
+      <span class="tool-badge">ツール</span>
+      <span class="tool-desc">縦動画に重ねるフレーム画像（PNG）を作れます。横動画を窓に収める型と、縦動画用の帯の型を選べます。入力は端末の外に出ません。</span>
+     </a>
+     <!-- ツールが増えたら、この <a class="tool-card"> を足すだけ -->
+    </div>
 
-<h2>フォントと色</h2>
-<div class="fonts">
-<div><label class="note" for="ft">上の文字</label><select id="ft"><option value="g">ゴシック</option><option value="r">丸ゴシック</option></select></div>
-<div><label class="note" for="fb">下の文字・帯</label><select id="fb"><option value="g">ゴシック</option><option value="r">丸ゴシック</option></select></div>
-</div>
-<p class="note" style="margin:6px 0 10px">数字とアルファベットは、どちらのフォントでも読みやすい英字フォントで表示します。</p>
-<div class="colors">
-<label>枠<input type="color" id="c_bg" value="#1b2a49"></label>
-<label>文字<input type="color" id="c_fg" value="#ffffff"></label>
-<label>ライン<input type="color" id="c_ac" value="#f2b134"></label>
-</div>
+    <section class="section">
+      <p class="section-label">公開資料</p>
+      <div class="card-list">
+ 
+        <a class="card" href="tea-shi-no-shokutaku.html">
+          <p class="card-tag">国まもりプロジェクト / 掌編</p>
+          <p class="card-title">ティー氏の食卓</p>
+          <p class="card-desc">守られる町と、備えていた町。<br>——同じ名前の男が歩く、二つの食卓の短い話。</p>
+        </a>
+        
+        <a class="card" href="immigration_10percent.html">
+          <p class="card-tag">国まもりプロジェクト / 資料整理</p>
+          <p class="card-title">「移民10％」発言をめぐる資料整理</p>
+          <p class="card-desc">神谷宗幣氏は何を言ったのか<br>——元発言と本人の説明を並べて、判断材料を整理する。</p>
+        </a>
+        
+        <a class="card" href="safetynet-kousou-2.html">
+          <p class="card-tag">国まもりプロジェクト / 社会保障 / 制度構想</p>
+          <p class="card-title">セーフティネット制度構想（案）</p>
+          <p class="card-desc">年金、生活保護、失業保障<br>——バラバラに見える社会保障を、一つの「安心」として束ね直す。</p>
+        </a>
+        
+        <a class="card" href="dokushobanare.html">
+          <p class="card-tag">国まもりプロジェクト / 覚書</p>
+          <p class="card-title">「読書離れ」という言葉について</p>
+          <p class="card-desc">— 何が失われ、何が失われていないのか —</p>
+        </a>
+        
+         <a class="card" href="kinsenjoretsu.html">
+          <p class="card-tag">国まもりプロジェクト / 暮らしの物差し / 番外編</p>
+          <p class="card-title">「金払ってる側が偉い」って勘違いじゃない？</p>
+          <p class="card-desc">公僕、代表制、お客様は神様、いただきます<br>——バラバラに見える五つの場面に、実は同じ勘違いが流れている。</p>
+        </a>
+        
+        <a class="card" href="sengo_nihon.html">
+          <p class="card-tag">国まもりプロジェクト / 憲法 / 歴史</p>
+          <p class="card-title">戦後日本の歩み<br>―日本国憲法をめぐる7つの問い―</p>
+          <p class="card-desc">日本国憲法は日本弱体化装置だ！　ほんとに？</p>
+        </a>
+        
+        <a class="card" href="tax-dashboard.html">
+          <p class="card-tag">国まもりプロジェクト / 税制・地方財政</p>
+          <p class="card-title">納税ダッシュボードはなぜ存在しないのか</p>
+          <p class="card-desc">技術的な障壁はない。データはすでにある。番号も振られている。<br>それでも、あなたが年間いくら、何の名目で納めているかを確認できる仕組み存在しないのはなぜ？</p>
+        </a>
+        
+        <a class="card" href="zaigemn_naki_genzeicho.html">
+          <p class="card-tag">国まもりプロジェクト / 財政</p>
+          <p class="card-title">法人税減税の財源まとめ</p>
+          <p class="card-desc">——所得税・消費税も添えて。　1984〜2024年　主要税制改正における財源の有無</p>
+        </a>
+        
+        <a class="card" href="jintei_analysis.html">
+          <p class="card-tag">国まもりプロジェクト / 構造分析 / 雇用・賃金</p>
+          <p class="card-title">「人手不足」の構造を読む</p>
+          <p class="card-desc">終身雇用・年功序列が生んだ人件費の歪みと、賃金問題が見えにくくなるメカニズム</p>
+        </a>
+        
+        <a class="card" href="ai_chihou_vision.html">
+          <p class="card-tag">国まもりプロジェクト — 付論</p>
+          <p class="card-title">楽しい未来の事例紹介 — AI時代の地方回帰ビジョン</p>
+          <p class="card-desc">たたき台版 · 2026年　です。</p>
+        </a>
+        
+        <a class="card" href="curry-udon-gospel.html">
+          <p class="card-tag">JAPANESE CRAZY THEORY ／ ネタ記事</p>
+          <p class="card-title">The Gospel of Curry Udon ／ カレーうどん神仏習合論</p>
+          <p class="card-desc">
+            A Unified Theory of Shinto, Buddhism & Gut Health.</br>
+            仏教、神道、腸活の大統一理論
+          </p>
+        </a>
+        
+        <a class="card" href="international_pressure.html">
+          <p class="card-tag">解説記事</p>
+          <p class="card-title">国際機関が日本に提言するとき、何が起きているのか</p>
+          <p class="card-desc">事実を確認し、複数の解釈を並べ、自分で考えるための記事です。</p>
+        </a>
+        
+        <a class="card" href="kuni-mamori/kuni-mamori.html">
+          <p class="card-tag">政策構想 / Policy Concept</p>
+          <p class="card-title">国まもりプロジェクト — 読み物</p>
+          <p class="card-desc">地方が死んでいく。どこから手をつけても詰まる。だったら人を先に持ってこよう。</p>
+        </a>
+        
+        <a class="card" href="kuni-mamori/kuni-mamori-ref.html">
+          <p class="card-tag">政策構想 / Policy Concept</p>
+          <p class="card-title">国まもりプロジェクト — 政策体系資料</p>
+          <p class="card-desc">国まもりプロジェクトの政策体系。財源・雇用・住居・交通・民間投資誘発の構造を整理した資料。</p>
+        </a>
+        
+        <a class="card" href="24sekkiColorTable.html">
+          <p class="card-tag">暦 / 色彩</p>
+          <p class="card-title">二十四節気 カレンダー</p>
+          <p class="card-desc">日本の季節区分「二十四節気」と伝統色との対応をまとめた参照表。</p>
+        </a>
 
-<h2>3. 保存する</h2>
-<button id="save" type="button">PNGを保存する</button>
-<p class="note" style="margin-top:8px" id="savenote">1080×1920の透明PNGとして保存されます。</p>
+        <a class="card" href="chinjunomori.html">
+          <p class="card-tag">文化 / 慣習</p>
+          <p class="card-title">街なか鎮守の森</p>
+          <p class="card-desc">「郷に入っては郷に従え」の精神を世界の宗教・地域の視点から横断的に検討する資料。</p>
+        </a>
 
-<h2>重ね方</h2>
-<ol>
-<li>保存したPNGを、CapCutやVLLOなどの動画編集アプリで「オーバーレイ」「画中画」として動画の上に重ねる</li>
-<li>16:9用・1:1用は、窓の部分に横動画や正方形動画が見えるように、動画の位置と大きさを合わせる</li>
-<li>9:16用（帯）は、縦動画にそのまま重ねる</li>
-</ol>
-</div>
+        <a class="card" href="japan_policy_report.html">
+          <p class="card-tag">法律 / 比較政策</p>
+          <p class="card-title">日本の統治構造　現状と問題点</p>
+          <p class="card-desc">G20各国における国旗・国家象徴の保護に関する法制度を比較した調査資料。</p>
+        </a>
 
-<div class="pvcol">
-<h2 style="margin-top:0">プレビュー</h2>
-<div class="pv" id="pv"><canvas id="cv" width="1080" height="1920"></canvas></div>
-<label class="chk"><input type="checkbox" id="smp">サンプル動画を重ねて見る（市松模様の部分が透明）</label>
-</div>
-</div>
+        <a class="card" href="sound-outdoor_speech.html">
+          <p class="card-tag">法律 / 表現の自由</p>
+          <p class="card-title">街頭演説の音響品質　改善提案</p>
+          <p class="card-desc">屋外での音声表現・拡声器使用にまつわる規制の構造と論点をまとめた資料。</p>
+        </a>
 
-<footer><a href="/kuni-mamori/shiryoshitsu/">国まもりプロジェクト 資料室へ</a></footer>
-</div>
+        <a class="card" href="task_format_manual.html">
+          <p class="card-tag">ツール / タスク管理</p>
+          <p class="card-title">引き算フィルタ法 タスク記法マニュアル</p>
+          <p class="card-desc">テキストファイルー枚で完結するタスク管理記法。</p>
+        </a>
 
-<dialog id="dlg">
-<p style="margin:0 0 8px">画像を長押しして「写真に追加」を選んでください。</p>
-<img id="out" alt="生成したフレーム">
-<p style="margin:10px 0 0"><button type="button" id="cls">閉じる</button></p>
-</dialog>
+      </div>
+    </section>
 
-<script>
-const $=id=>document.getElementById(id);
-const W=1080,H=1920,FOOT=130,MAXW=980;
-const DESIGNS={
- w169:{n:'16:9動画用',d:'横動画を窓に収める',win:[0,400,1080,608],top:[0,400],bot:[1008,H],band:null},
- w11:{n:'1:1動画用',d:'正方形動画を窓に収める',win:[0,300,1080,1080],top:[0,300],bot:[1380,H],band:null},
- band:{n:'9:16動画用（帯）',d:'縦動画にそのまま重ねる',win:null,top:[0,260],bot:[1360,H],band:[260,1360]}
-};
-const SIZES={xl:130,l:100,m:74,s:54};
-const FIELDS=[['t1','上1行目','タイトルをここに','l'],['t2','上2行目','サブタイトル','m'],['b1','下1行目','名前','l'],['b2','下2行目','','m'],['b3','下3行目','','m'],['b4','下4行目','','m']];
-const FONTS={g:{stack:'"Montserrat","Noto Sans JP",sans-serif',w:900},r:{stack:'"Montserrat","M PLUS Rounded 1c",sans-serif',w:800}};
-let design='w169',tok=0;
+    <footer>
+      <span class="footer-note">© maskedrider88</span>
+      <a class="footer-link" href="https://github.com/maskedrider88/maskedrider88.github.io" target="_blank" rel="noopener">GitHub ↗</a>
+    </footer>
 
-$('designs').innerHTML=Object.keys(DESIGNS).map((k,i)=>`<label><input type="radio" name="ds" value="${k}"${i?'':' checked'}><b>${DESIGNS[k].n}</b><small>${DESIGNS[k].d}</small></label>`).join('');
-const opt=d=>[['xl','特大'],['l','大'],['m','中'],['s','小']].map(([v,t])=>`<option value="${v}"${v===d?' selected':''}>${t}</option>`).join('');
-$('fields').innerHTML=FIELDS.map(([id,lb,df,sz])=>`<div class="row"><label for="v_${id}">${lb}</label><input type="text" id="v_${id}" value="${df}"><select id="s_${id}" aria-label="${lb}の大きさ">${opt(sz)}</select></div>`).join('');
-
-async function draw(){
- const my=++tok,c=$('cv'),x=c.getContext('2d');
- const v=id=>$('v_'+id).value;
- const txt=FIELDS.map(f=>v(f[0])).join('')+v('f')+'0123456789';
- const ft=FONTS[$('ft').value],fb=FONTS[$('fb').value];
- try{await Promise.all([['Noto Sans JP',900],['M PLUS Rounded 1c',800],['Montserrat',800]].map(([n,w])=>document.fonts.load(`${w} 48px "${n}"`,txt)))}catch(e){}
- if(my!==tok)return;
- const D=DESIGNS[design],bg=$('c_bg').value,fg=$('c_fg').value,ac=$('c_ac').value;
- x.clearRect(0,0,W,H);
- x.fillStyle=bg;
- if(D.win){x.fillRect(0,0,W,H);x.clearRect(...D.win);x.fillStyle=ac;x.fillRect(0,D.win[1]-6,W,6);x.fillRect(0,D.win[1]+D.win[3],W,6)}
- else{x.fillRect(0,0,W,D.band[0]);x.fillRect(0,D.band[1],W,H-D.band[1]);x.fillStyle=ac;x.fillRect(0,D.band[0]-6,W,6);x.fillRect(0,D.band[1],W,6)}
- const hasF=v('f').trim()!=='';
- const lines=(ids,f,y0,y1)=>{
-  const it=ids.map(i=>({t:v(i).trim(),p:SIZES[$('s_'+i).value]})).filter(o=>o.t);
-  if(!it.length)return;
-  const tot=it.reduce((a,o)=>a+o.p*1.3,0),s=Math.min(1,(y1-y0)*.92/tot);
-  let cy=y0+(y1-y0)/2-tot*s/2;
-  x.fillStyle=fg;x.textAlign='center';x.textBaseline='middle';
-  for(const o of it){
-   const h=o.p*1.3*s;let p=o.p*s;
-   x.font=`${f.w} ${p}px ${f.stack}`;
-   const w=x.measureText(o.t).width;
-   if(w>MAXW){p*=MAXW/w;x.font=`${f.w} ${p}px ${f.stack}`}
-   x.fillText(o.t,W/2,cy+h/2);cy+=h;
-  }
- };
- lines(['t1','t2'],ft,D.top[0],D.top[1]);
- lines(['b1','b2','b3','b4'],fb,D.bot[0],hasF?H-FOOT:H-24);
- if(hasF){
-  x.fillStyle='rgba(0,0,0,.28)';x.fillRect(0,H-FOOT,W,FOOT);
-  x.fillStyle=ac;x.fillRect(0,H-FOOT,W,4);
-  let p=44;x.font=`${fb.w} ${p}px ${fb.stack}`;
-  const w=x.measureText(v('f')).width;if(w>MAXW){p*=MAXW/w;x.font=`${fb.w} ${p}px ${fb.stack}`}
-  x.fillStyle=fg;x.textAlign='center';x.textBaseline='middle';x.fillText(v('f'),W/2,H-FOOT/2+2);
- }
-}
-
-document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',()=>{
- if(e.name==='ds')design=e.value;
- if(e.id==='smp')$('pv').classList.toggle('sample',e.checked);else draw();
-}));
-
-const iOS=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-if(iOS){$('save').textContent='画像を保存・共有する';$('savenote').textContent='共有シートから「画像を保存」を選ぶと、写真に保存されます。'}
-$('save').onclick=async()=>{
- await draw();
- $('cv').toBlob(async b=>{
-  const f=new File([b],'frame-9x16.png',{type:'image/png'});
-  if(iOS&&navigator.canShare&&navigator.canShare({files:[f]})){
-   try{await navigator.share({files:[f]});return}catch(e){if(e.name==='AbortError')return}
-  }
-  if(iOS){$('out').src=URL.createObjectURL(b);$('dlg').showModal();return}
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=f.name;a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
- },'image/png');
-};
-$('cls').onclick=()=>$('dlg').close();
-draw();
-</script>
+  </div>
 </body>
 </html>
